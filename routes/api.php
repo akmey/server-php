@@ -17,7 +17,7 @@ Route::middleware('auth:api')->get('/user', 'APIController@getUser');
 
 Route::get('/user/{userid}', 'APIController@getUser');
 
-Route::get('/user/email/{email}', 'APIController@getUserByEmail');
+Route::get('/user/match/{query}', 'APIController@getUserByQuery');
 
 Route::middleware(['auth:api', 'scopes:keys'])->post('/keys/add', 'APIController@addKey')->name('keyadd');
 

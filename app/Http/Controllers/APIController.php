@@ -82,21 +82,21 @@ class APIController extends Controller
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {
             $keys = Key::getByUser($user);
-            return response()->json(['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'keys' => $keys], 200);
+            return response()->json(['id' => $user->id, 'username' => $user->name, 'email' => $user->email, 'keys' => $keys], 200);
         }
     }
 
-    public function getUserByEmail(Request $request, $useremail = 'self') {
-        if ($useremail == 'self') {
+    public function getUserByQuery(Request $request, $query = 'self') {
+        if ($query == 'self') {
             $user = Auth::User();
         } else {
-            $user = User::where('email', $useremail)->first();
+            $user = User::where('email', $query)->orWhere('name', $query)->first();
         }
         if (empty($user)) {
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {
             $keys = Key::getByUser($user);
-            return response()->json(['id' => $user->id, 'name' => $user->name, 'email' => $user->email, 'keys' => $keys], 200);
+            return response()->json(['id' => $user->id, 'username' => $user->name, 'email' => $user->email, 'keys' => $keys], 200);
         }
     }
 }
