@@ -21,6 +21,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/dashboard/apps', 'DashboardController@apps')->name('dashboardapps');
 
+Route::get('/doc', 'DocumentationController@index')->name('documentation');
+
 Route::get('/edit/{keyid}', 'DashboardController@edit')->name('edit');
 
 Route::post('/edit/{keyid}', 'DashboardController@editPost')->name('editpost');
