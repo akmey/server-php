@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Key;
 use App\Notifications\KeyAdded;
+use App\Notifications\KeyRemoved;
 
 class KeyObserver
 {
@@ -37,7 +38,7 @@ class KeyObserver
      */
     public function deleted(Key $key)
     {
-        //
+        $key->user->notify(new KeyRemoved($key));
     }
 
     /**
