@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Hash;
 use App\Key;
+use Illuminate\Http\Request;
+use App\Http\Requests\EditProfile;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -48,7 +50,6 @@ class DashboardController extends Controller
         if ($key->user != Auth::User()) {
             abort(403);
         } else {
-            // Key::edit($key->id, ['comment' => $request->input('name')]);
             $key->comment = $request->input('name');
             $key->save();
             return view('edit', ['key' => $key, 'status' => 'Saved!']);
@@ -70,5 +71,29 @@ class DashboardController extends Controller
 
     public function apps() {
         return view('oauthapps');
+    }
+
+    public function editProfile() {
+        return view('edit-profile', ['status' => null, 'error' => null]);
+    }
+
+    public function editProfilePost(EditProfile $request) {
+        $user = Auth::user();
+        if (Hash::check($request->input('oldpasswd'), $user->password)) {
+            $tochange = $request->validated();
+            if ($tochange['username']) {
+                $user->name = $tochange['username'];
+            }
+            if ($tochange['email']) {
+                $user->email = $tochange['email'];
+            }
+            if ($tochange['password']) {
+                $user->password = $tochange['password'];
+            }
+            $user->save();
+            return view('edit-profile', ['status' => 'Saved!', 'error' => null]);
+        } else {
+            return view('edit-profile', ['status' => null, 'error' => 'Wrong old password']);
+        }
     }
 }

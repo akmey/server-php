@@ -31,6 +31,11 @@ Vue.component(
 );
 
 Vue.component(
+    'new-key',
+    require('./components/NewKey.vue').default
+);
+
+Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
 );

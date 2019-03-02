@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::any('/delete-account', 'Auth\DeleteAccountController@deleteAccount')->name('deleteaccount');
 
@@ -23,9 +23,15 @@ Route::get('/export', 'ExportImportController@export')->name('export');
 
 Route::post('/import', 'ExportImportController@import')->name('import');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard')->middleware('verified');
 
-Route::get('/dashboard/apps', 'DashboardController@apps')->name('dashboardapps');
+Route::post('/addkey', 'APIController@addKey')->name('addkey')->middleware('verified');
+
+Route::get('/dashboard/apps', 'DashboardController@apps')->name('dashboardapps')->middleware('verified');
+
+Route::get('/my-profile', 'DashboardController@editProfile')->name('myprofile')->middleware('verified');
+
+Route::post('/my-profile', 'DashboardController@editProfilePost')->name('myprofilepost')->middleware('verified');
 
 Route::get('/doc', 'DocumentationController@index')->name('documentation');
 

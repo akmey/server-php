@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Key;
+use App\User;
 use App\Observers\KeyObserver;
+use App\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191); // For MariaDB users (prefer Mysql pls)
         Key::observe(KeyObserver::class);
+        User::observe(UserObserver::class);
     }
 
     /**
