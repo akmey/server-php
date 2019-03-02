@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::any('/delete-account', 'Auth\DeleteAccountController@deleteAccount')->name('deleteaccount');
+
+Route::get('/export', 'ExportImportController@export')->name('export');
+
+Route::post('/import', 'ExportImportController@import')->name('import');
+
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::get('/dashboard/apps', 'DashboardController@apps')->name('dashboardapps');

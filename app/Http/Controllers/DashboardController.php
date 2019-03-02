@@ -25,17 +25,15 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $keys = Key::getByUser(Auth::User());
-        return view('home', ['keys' => $keys]);
+        return view('home');
     }
 
     public function edit(Request $request, $keyid) {
-        $user = Auth::User();
-        $key = Key::getById($keyid);
+        $key = Key::find($keyid);
         if (empty($key)) {
             abort(404);
         }
-        if ($key->userid != $user->id) {
+        if ($key->user != Auth::User()) {
             abort(403);
         } else {
             return view('edit', ['key' => $key, 'status' => null]);
@@ -43,29 +41,29 @@ class DashboardController extends Controller
     }
 
     public function editPost(Request $request, $keyid) {
-        $user = Auth::User();
-        $key = Key::getById($keyid);
+        $key = Key::find($keyid);
         if (empty($key)) {
             abort(404);
         }
-        if ($key->userid != $user->id) {
+        if ($key->user != Auth::User()) {
             abort(403);
         } else {
-            Key::edit($key->id, ['comment' => $request->input('name')]);
-            return view('edit', ['key' => Key::getById($keyid), 'status' => 'Saved!']);
+            // Key::edit($key->id, ['comment' => $request->input('name')]);
+            $key->comment = $request->input('name');
+            $key->save();
+            return view('edit', ['key' => $key, 'status' => 'Saved!']);
         }
     }
 
     public function delete($keyid) {
-        $user = Auth::User();
-        $key = Key::getById($keyid);
+        $key = Key::find($keyid);
         if (empty($key)) {
             abort(404);
         }
-        if ($key->userid != $user->id) {
+        if ($key->user != Auth::User()) {
             abort(403);
         } else {
-            Key::delete($key->id);
+            $key->delete();
             return redirect('dashboard');
         }
     }

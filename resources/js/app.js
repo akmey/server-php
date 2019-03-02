@@ -26,6 +26,11 @@ Vue.component(
 );
 
 Vue.component(
+    'delete-account',
+    require('./components/DeleteAccount.vue').default
+);
+
+Vue.component(
     'passport-clients',
     require('./components/passport/Clients.vue').default
 );
