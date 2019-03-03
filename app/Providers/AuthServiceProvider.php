@@ -30,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
 
         // Passport::withoutCookieSerialization();
 
+        Passport::enableImplicitGrant();
+
         Passport::tokensCan([
             'keys' => 'Add, Edit and Remove SSH keys on your account (!!)'
         ]);

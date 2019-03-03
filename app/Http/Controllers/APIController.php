@@ -33,7 +33,7 @@ class APIController extends Controller
             $key = Key::find($keyid);
             if (empty($key)) {
                 return response()->json(['error' => 'not_found', 'message' => 'This key does not exist.'], 404);
-            } elseif ($key->user != Auth::user()) {
+            } elseif ($key->user_id != Auth::id()) {
                 return response()->json(['error' => 'not_authorized', 'message' => 'You cannot edit this key (it\'s not your key)'], 403);
             } else {
                 $key->comment = $request->input('comment');
@@ -48,7 +48,7 @@ class APIController extends Controller
         $key = Key::find($keyid);
         if (empty($key)) {
             return response()->json(['error' => 'not_found', 'message' => 'This key does not exist.'], 404);
-        } elseif ($key->userid != Auth::id()) {
+        } elseif ($key->user_id != Auth::id()) {
             return response()->json(['error' => 'not_authorized', 'message' => 'You cannot delete this key (it\'s not your key)'], 403);
         } else {
             $key->delete();
