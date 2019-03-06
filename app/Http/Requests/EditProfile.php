@@ -34,6 +34,18 @@ class EditProfile extends FormRequest
     }
 
     /**
+     * Get the error messages
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'username.regex' => 'Username can only be composed of letters and numbers.',
+        ];
+    }
+
+    /**
      * Configure the validator instance.
      *
      * @param  \Illuminate\Validation\Validator  $validator
@@ -47,7 +59,7 @@ class EditProfile extends FormRequest
         $validator->sometimes('email', 'email|unique:users', function($input) {
             return !empty($input->email);
         });
-        $validator->sometimes('password', 'min:8', function($input) {
+        $validator->sometimes('password', 'min:8|string', function($input) {
             return !empty($input->password);
         });
     }

@@ -88,7 +88,7 @@ class DashboardController extends Controller
                 $user->email = $tochange['email'];
             }
             if ($tochange['password']) {
-                $user->password = $tochange['password'];
+                $user->password = Hash::make($tochange['password']);
             }
             $user->save();
             return view('edit-profile', ['status' => 'Saved!', 'error' => null]);
