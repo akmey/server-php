@@ -5,9 +5,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
+require('./semantic');
 
 window.Vue = require('vue');
+/* global Vue, $ */
 
 /**
  * The following block of code may be used to automatically register your
@@ -56,6 +58,10 @@ Vue.component(
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+const app = new Vue({ // eslint-disable-line no-unused-vars
     el: '#app'
+});
+
+$().ready(() => {
+    $('.ui.dropdown').dropdown();
 });

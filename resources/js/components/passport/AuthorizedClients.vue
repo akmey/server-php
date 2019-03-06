@@ -7,44 +7,41 @@
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="card card-default">
-                <div class="card-header">Authorized Applications</div>
+            <div class="ui segment">
+                <h3 class="ui header">Authorized Applications</h3>
+                <!-- Authorized Tokens -->
+                <table class="ui celled table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Scopes</th>
+                            <th><i class="remove icon"></i></th>
+                        </tr>
+                    </thead>
 
-                <div class="card-body">
-                    <!-- Authorized Tokens -->
-                    <table class="table table-borderless mb-0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Scopes</th>
-                                <th></th>
-                            </tr>
-                        </thead>
+                    <tbody>
+                        <tr v-for="token in tokens">
+                            <!-- Client Name -->
+                            <td>
+                                {{ token.client.name }}
+                            </td>
 
-                        <tbody>
-                            <tr v-for="token in tokens">
-                                <!-- Client Name -->
-                                <td style="vertical-align: middle;">
-                                    {{ token.client.name }}
-                                </td>
+                            <!-- Scopes -->
+                            <td>
+                                <span v-if="token.scopes.length > 0">
+                                    {{ token.scopes.join(', ') }}
+                                </span>
+                            </td>
 
-                                <!-- Scopes -->
-                                <td style="vertical-align: middle;">
-                                    <span v-if="token.scopes.length > 0">
-                                        {{ token.scopes.join(', ') }}
-                                    </span>
-                                </td>
-
-                                <!-- Revoke Button -->
-                                <td style="vertical-align: middle;">
-                                    <a class="action-link text-danger" @click="revoke(token)">
-                                        Revoke
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            <!-- Revoke Button -->
+                            <td>
+                                <a class="ui red button" @click="revoke(token)">
+                                    Revoke
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

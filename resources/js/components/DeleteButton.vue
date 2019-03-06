@@ -1,5 +1,5 @@
 <template>
-    <a @click.prevent="deleteSubmit" href="#" class="btn btn-danger">Delete</a>
+    <a @click.prevent="deleteSubmit" href="#" class="ui red button">Delete</a>
 </template>
 
 <script>

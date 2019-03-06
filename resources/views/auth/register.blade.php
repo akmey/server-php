@@ -1,6 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="ui container">
+    <div class="ui segment">
+        <h2 class="ui center aligned header">{{ __('Register') }}</h2>
+
+        <form method="POST" action="{{ route('register') }}" class="ui form{{ !empty($errors->all()) ? ' error' : '' }}">
+            @csrf
+
+            <div class="field{{ $errors->has('name') ? ' error' : '' }}">
+                <label for="name">{{ __('Username') }}</label>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+            </div>
+
+            <div class="field{{ $errors->has('email') ? ' error' : '' }}">
+                <label for="email">{{ __('E-Mail Address') }}</label>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+            </div>
+
+            <div class="field{{ $errors->has('password') ? ' error' : '' }}">
+                <label for="password">{{ __('Password') }}</label>
+                <input id="password" type="password" name="password" required>
+            </div>
+
+            <div class="field{{ $errors->has('password') ? ' error' : '' }}">
+                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <input id="password-confirm" type="password" name="password_confirmation" required>
+            </div>
+
+            @if (!empty($errors->all()))
+                <div class="ui error message">
+                    <div class="header">Please check these errors and retry :</div>
+                    <div class="content">
+                        <ul>
+                            @foreach ($errors->all() as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+
+            <button type="submit" class="ui primary button">
+                {{ __('Register') }}
+            </button>
+        </form>
+    </div>
+</div>
+@endsection
+
+
+@section('oldcontent')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

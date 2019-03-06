@@ -1,5 +1,5 @@
 <template>
-    <a @click.prevent="deleteAccountSubmit" href="#" class="btn btn-danger">Delete my account<br/><span class="badge badge-warning">This will delete all your account data from this server.</span></a>
+    <a @click.prevent="deleteAccountSubmit" href="#" class="ui red button">Delete my account<br/>This will delete all your account data from this server.</a>
 </template>
 
 <script>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Akmey') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,47 +21,41 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+        <nav class="ui fixed inverted menu">
+            <div class="ui container">
+                <a class="header item" href="{{ url('/') }}">
+                    {{ config('app.name', 'Akmey') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button>-->
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                <div class="right menu" id="navbarSupportedContent">
+                    {{--<!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">--}}
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+                            <a class="item" href="{{ route('login') }}">{{ __('Login') }}</a>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <a class="item" href="{{ route('register') }}">{{ __('Register') }}</a>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <div href="#" class="ui dropdown item">
+                                {{ Auth::user()->name }} <i class="dropdown icon"></i>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                <div class="menu">
+                                    <a class="item" href="{{ route('dashboard') }}">
                                         Dashboard
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('dashboardapps') }}">
+                                    <a class="item" href="{{ route('dashboardapps') }}">
                                         OAuth Apps
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -71,29 +65,24 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </div>
                         @endguest
-                    </ul>
+                    {{-- </ul> --}}
                 </div>
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="minimargin">
             <noscript>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card text-white bg-danger">
-                            <div class="card-header">JavaScript warning</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Akmey works with JS.</h5>
-                                <p class="card-text">We understand that JavaScript may annoy you, but certain parts of Akmey needs JS to work. However, we make the possible to make Akmey accessible without JS. Try to activate it if you have problems</p>
-                            </div>
+                <div class="ui container">
+                    <div class="ui negative message">
+                        <div class="header">
+                            Akmey works with JS.
                         </div>
+                        <p>We understand that JavaScript may annoy you, but certain parts of Akmey needs JS to work. However, we make the possible to make Akmey accessible without JS. Try to activate it if you have problems</p>
                     </div>
                 </div>
-            </div>
-            <br/>
+                <br/>
             </noscript>
             @yield('content')
         </main>

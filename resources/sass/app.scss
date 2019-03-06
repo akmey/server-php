@@ -2,13 +2,19 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
-
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~semantic-ui-css/semantic';
 
-.navbar-laravel {
+.minimargin {
+    margin-top: 5em;
+}
+
+.break {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/*.navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
@@ -17,4 +23,4 @@
     .no-flex  {
         display: block;
     }
-}
+}*/

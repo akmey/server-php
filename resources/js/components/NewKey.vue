@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="sendForm">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">New key</span>
+        <div class="ui fluid labeled input">
+            <div class="ui label">
+                New key
             </div>
             <input name="key" v-model="keyinput" class="form-control" aria-label="New key (paste it without comments)"></input>
         </div>
