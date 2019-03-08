@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">{{ __('Reset Password') }}</h2>
         @if (session('status'))
             <div class="ui success message" role="alert">

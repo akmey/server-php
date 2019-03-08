@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">Dashboard</h2>
 
         @if (session('status'))
@@ -21,7 +21,7 @@
                 We accept major key types.
         </div>
 
-        <table class="ui celled table">
+        <table class="ui celled table" v-bind:class="{ inverted: dark }">
             <thead>
                 <tr>
                     <th scope="col">#</th>

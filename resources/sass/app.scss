@@ -14,6 +14,19 @@
     word-break: break-word;
 }
 
+.darkbg {
+    background-color: #252525;
+    label {
+        color: unset !important;
+    }
+    .header:not(.item) {
+        color: unset !important;
+    }
+    .ui.list > .item .description {
+        color: unset !important;
+    }
+}
+
 /*.navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

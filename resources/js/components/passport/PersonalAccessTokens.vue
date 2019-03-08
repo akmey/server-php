@@ -1,12 +1,6 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-</style>
-
 <template>
     <div>
-        <div class="ui top attached tabular menu">
+        <div class="ui top attached tabular menu" v-bind:class="{ inverted: dark }">
             <span class="active item">
                 Personal Access Tokens
             </span>
@@ -20,14 +14,14 @@
                 </div>
             </div>
         </div>
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" v-bind:class="{ inverted: dark }">
             <!-- No Tokens Notice -->
             <p v-if="tokens.length === 0">
                 You have not created any personal access tokens.
             </p>
 
             <!-- Personal Access Tokens -->
-            <table class="ui celled table" v-if="tokens.length > 0">
+            <table class="ui celled table" v-bind:class="{ inverted: dark }" v-if="tokens.length > 0">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -137,6 +131,7 @@
 
 <script>
     export default {
+        props: ['dark'],
         /*
          * The component's data.
          */

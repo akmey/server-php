@@ -1,12 +1,6 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-</style>
-
 <template>
     <div>
-        <div class="ui top attached tabular menu">
+        <div class="ui top attached tabular menu" v-bind:class="{ inverted: dark }">
             <span class="active item">
                 OAuth Clients
             </span>
@@ -20,13 +14,13 @@
                 </div>
             </div>
         </div>
-        <div class="ui bottom attached segment">
+        <div class="ui bottom attached segment" v-bind:class="{ inverted: dark }">
             <!-- Current Clients -->
             <p v-if="clients.length === 0">
                 You have not created any OAuth clients.
             </p>
 
-            <table class="ui celled table" v-if="clients.length > 0">
+            <table class="ui celled table" v-bind:class="{ inverted: dark }" v-if="clients.length > 0">
                 <thead>
                     <tr>
                         <th>Client ID</th>
@@ -181,6 +175,7 @@
 
 <script>
     export default {
+        props: ['dark'],
         /*
          * The component's data.
          */

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h1 class="ui center aligned header">What's Akmey?</h1>
         <p>Akmey is like keyservers, but not for GPG keys, for SSH ones! It has a simple <a href="{{ env('SWAGGER_URL', 'https://leonekmi.fr/swagger/') }}" target="_blank">API</a> and apps to retrieve keys and add it to your authorized_keys file.</p>
 

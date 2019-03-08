@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">Edit key {{ $key->comment }}</h2>
 
         @if($status)

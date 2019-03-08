@@ -1,16 +1,10 @@
-<style scoped>
-    .action-link {
-        cursor: pointer;
-    }
-</style>
-
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="ui segment">
+            <div class="ui segment" v-bind:dark="dark">
                 <h3 class="ui header">Authorized Applications</h3>
                 <!-- Authorized Tokens -->
-                <table class="ui celled table">
+                <table class="ui celled table" v-bind:dark="dark">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -49,6 +43,7 @@
 
 <script>
     export default {
+        props: ['dark'],
         /*
          * The component's data.
          */

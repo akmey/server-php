@@ -52,6 +52,11 @@ Vue.component(
     require('./components/passport/PersonalAccessTokens.vue').default
 );
 
+Vue.component(
+    'dark-button',
+    require('./components/DarkButton').default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -59,7 +64,21 @@ Vue.component(
  */
 
 const app = new Vue({ // eslint-disable-line no-unused-vars
-    el: '#app'
+    el: '#app',
+    data: {
+        dark: false
+    },
+    methods: {
+        switchTheme: function(dark) {
+            if (dark) {
+                this.dark = true;
+                $('body').addClass('darkbg');
+            } else {
+                this.dark = false;
+                $('body').removeClass('darkbg');
+            }
+        }
+    }
 });
 
 $().ready(() => {

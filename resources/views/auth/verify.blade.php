@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">{{ __('Verify Your Email Address') }}</h2>
 
         <div class="card-body">

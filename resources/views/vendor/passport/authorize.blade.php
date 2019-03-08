@@ -29,13 +29,13 @@
                         Authorization Request
             </h2>
 
-            <div class="ui stacked segment">
+            <div class="ui stacked segment" v-bind:class="{ inverted: dark }">
                 <!-- Introduction -->
                 <p><strong>{{ $client->name }}</strong> is requesting permission to access your account.</p>
 
                 <!-- Scope List -->
                 @if (count($scopes) > 0)
-                    <div class="ui segment">
+                    <div class="ui segment" v-bind:class="{ inverted: dark }">
                             <p><strong>This application will be able to:</strong></p>
 
                             <ul>

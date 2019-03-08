@@ -38,6 +38,7 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">--}}
+                        <dark-button v-on:change-theme="switchTheme"></dark-button>
                         <!-- Authentication Links -->
                         @guest
                             <a class="item" href="{{ route('login') }}">{{ __('Login') }}</a>

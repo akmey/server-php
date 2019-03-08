@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="ui container">
-    <div class="ui segment">
+    <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">{{ __('Register') }}</h2>
 
         <form method="POST" action="{{ route('register') }}" class="ui form{{ !empty($errors->all()) ? ' error' : '' }}">
