@@ -75,6 +75,8 @@ class APIController extends Controller
         }
     }
 
+    private $filter;
+
     public function getUser(Request $request, $userid = 'self') {
         if ($userid == 'self') {
             $user = Auth::User();
@@ -84,7 +86,14 @@ class APIController extends Controller
         if (empty($user)) {
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {
-            $user->load('keys');
+            if ($request->input('filter')) {
+                $this->filter = $request->input('filter');
+                $user->load(['keys' => function ($query) {
+                    $query->where('comment', $this->filter);
+                }]);
+            } else {
+                $user->load('keys');
+            }
             return response()->json($user, 200);
         }
     }
@@ -98,7 +107,14 @@ class APIController extends Controller
         if (empty($user)) {
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {
-            $user->load('keys');
+            if ($request->input('filter')) {
+                $this->filter = $request->input('filter');
+                $user->load(['keys' => function ($query) {
+                    $query->where('comment', $this->filter);
+                }]);
+            } else {
+                $user->load('keys');
+            }
             return response()->json($user, 200);
         }
     }
