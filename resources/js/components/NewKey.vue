@@ -21,7 +21,7 @@
         methods: {
             sendForm: function(e) {
                 if (!this.keyinput) { alert('Key is empty'); return false; }
-                var regex = /^ssh-(?:[0-9a-z]){2,} [A-Za-z0-9]{12,}$/;
+                var regex = /^ssh-(?:[0-9a-z]){2,} [\S]{12,}$/;
                 if (!regex.test(this.keyinput)) { alert('Key is malformed'); return false; }
                 var body = 'key='+encodeURIComponent(this.keyinput);
                 var headers = new Headers();
