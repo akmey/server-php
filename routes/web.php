@@ -35,6 +35,8 @@ Route::post('/my-profile', 'DashboardController@editProfilePost')->name('myprofi
 
 Route::get('/doc', 'DocumentationController@index')->name('documentation');
 
+Route::get('/privacy', 'DocumentationController@privacy')->name('privacy');
+
 Route::get('/edit/{keyid}', 'DashboardController@edit')->name('edit');
 
 Route::post('/edit/{keyid}', 'DashboardController@editPost')->name('editpost');

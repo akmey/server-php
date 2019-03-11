@@ -5,6 +5,10 @@
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
         <h2 class="ui center aligned header">{{ __('Register') }}</h2>
 
+        <div class="ui message">
+            <p>Please review the <a href="/privacy?register=1">privacy policy</a>. By clicking "Register", you accept the privacy policy.</p>
+        </div>
+
         <form method="POST" action="{{ route('register') }}" class="ui form{{ !empty($errors->all()) ? ' error' : '' }}">
             @csrf
 
