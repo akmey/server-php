@@ -47,7 +47,7 @@
                             @endif
                         @else
                             <div href="#" class="ui dropdown item">
-                                {{ Auth::user()->name }} <i class="dropdown icon"></i>
+                                <img class="ui avatar circular image" src="/storage/{{ Auth::user()->profilepic }}"><span>{{ Auth::user()->name }}</span> <i class="dropdown icon"></i>
 
                                 <div class="menu">
                                     <a class="item" href="{{ route('dashboard') }}">

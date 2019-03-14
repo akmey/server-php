@@ -42,3 +42,5 @@ Route::get('/edit/{keyid}', 'DashboardController@edit')->name('edit');
 Route::post('/edit/{keyid}', 'DashboardController@editPost')->name('editpost');
 
 Route::any('/delete/{keyid}', 'DashboardController@delete')->name('deletepost');
+
+Route::get('/u/{username}', 'PublicController@showProfile')->name('profile');

@@ -27,29 +27,57 @@
             </div>
         @endif
 
-        <form method="post" class="ui form">
+        <form method="post" class="ui form" enctype="multipart/form-data">
             @csrf
-            <div class="field">
-                <label for="userName">Username</label>
-                <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}">
-                <small id="nameHelp">It must be unique, alphanumeric.</small>
+            <div class="ui two column centered grid">
+                <div class="center aligned column">
+                    <img class="ui circular centered tiny image" src="/storage/{{ Auth::user()->profilepic }}">
+                </div>
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="profilePicture">Profile picture</label>
+                        <input type="file" name="profilepic" id="profilePicture">
+                        <small id="profilePicture">Upload a nice profile picture!</small>
+                    </div>
+                </div>
             </div>
-            <div class="field">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}">
-                <small id="emailHelp">If you change that, you need to confirm the new address before using it.</small>
+            <div class="ui two column centered grid">
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="userName">Username</label>
+                        <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}">
+                        <small id="nameHelp">It must be unique, alphanumeric.</small>
+                    </div>
+                </div>
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}">
+                        <small id="emailHelp">If you change that, you need to confirm the new address before using it.</small>
+                    </div>
+                </div>
             </div>
-            <div class="field">
-                <label for="password">New Password</label>
-                <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123">
-                <small id="passwordHelp">Choose a faster, stronger, better password!</small>
+            <div class="ui two column centered grid">
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="password">New Password</label>
+                        <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123">
+                        <small id="passwordHelp">Choose a faster, stronger, better password!</small>
+                    </div>
+                </div>
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="oldpasswd">Old Password</label>
+                        <input type="password" id="oldpasswd" name="oldpasswd" aria-describedby="oldpasswdHelp" placeholder="oldpasswd123" required="">
+                        <small id="oldpasswdHelp">Please retype your password for any change.</small>
+                    </div>
+                </div>
             </div>
-            <div class="field">
-                <label for="oldpasswd">Old Password</label>
-                <input type="password" id="oldpasswd" name="oldpasswd" aria-describedby="oldpasswdHelp" placeholder="oldpasswd123" required="">
-                <small id="oldpasswdHelp">Please retype your password for any change.</small>
+            <div class="ui two column centered grid">
+                <div class="center aligned column">
+                    <button type="submit" class="ui primary button">Save</button>
+                </div>
             </div>
-            <button type="submit" class="ui primary button">Save</button>
         </form>
     </div>
 </div>

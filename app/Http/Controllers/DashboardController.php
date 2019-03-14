@@ -81,14 +81,17 @@ class DashboardController extends Controller
         $user = Auth::user();
         if (Hash::check($request->input('oldpasswd'), $user->password)) {
             $tochange = $request->validated();
-            if ($tochange['username']) {
+            if (!empty($tochange['username'])) {
                 $user->name = $tochange['username'];
             }
-            if ($tochange['email']) {
+            if (!empty($tochange['email'])) {
                 $user->email = $tochange['email'];
             }
-            if ($tochange['password']) {
+            if (!empty($tochange['password'])) {
                 $user->password = Hash::make($tochange['password']);
+            }
+            if (!empty($tochange['profilepic'])) {
+                $user->profilepic = $tochange['profilepic']->store('profilepics', 'public');
             }
             $user->save();
             return view('edit-profile', ['status' => 'Saved!', 'error' => null]);

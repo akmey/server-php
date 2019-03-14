@@ -26,7 +26,7 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        $user->notify(new UserEdited($user));
+        // $user->notify(new UserEdited($user)); # Temporairly disable these notifications to avoid user spam
     }
 
     /**
