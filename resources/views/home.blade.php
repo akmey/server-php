@@ -13,6 +13,8 @@
 
         <h3 class="ui center aligned header">You are logged in!</h3>
 
+        <stories></stories>
+
         <p>Connect to gui@<span/>{{ env('SSH_ACCESS') }} with your favourite SSH client to add your keys or paste your key down below (without key comment).</p>
 
         <new-key csrf="{{ csrf_token() }}"></new-key>

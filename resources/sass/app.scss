@@ -2,8 +2,11 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Bootstrap
+// Semantic
 @import '~semantic-ui-css/semantic';
+
+// Zuck.js (stories)
+@import '~zuck.js/zuck.min';
 
 .minimargin {
     margin-top: 5em;
