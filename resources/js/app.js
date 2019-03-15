@@ -83,4 +83,5 @@ const app = new Vue({ // eslint-disable-line no-unused-vars
 
 $().ready(() => {
     $('.ui.dropdown').dropdown();
+    $('.ui.checkbox').checkbox();
 });

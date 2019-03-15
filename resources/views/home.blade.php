@@ -43,6 +43,7 @@
         </table>
 
         <h3>Settings</h3>
+        <a href="{{ url('/github/login') }}" class="ui teal labeled icon button"><i class="github icon"></i> Import keys from a GitHub account</a>
         <div class="ui buttons" role="group">
             <a href="/export" class="ui primary button">Export my account</a>
             <div class="or"></div>

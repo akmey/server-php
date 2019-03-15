@@ -44,3 +44,9 @@ Route::post('/edit/{keyid}', 'DashboardController@editPost')->name('editpost');
 Route::any('/delete/{keyid}', 'DashboardController@delete')->name('deletepost');
 
 Route::get('/u/{username}', 'PublicController@showProfile')->name('profile');
+
+Route::get('/github/login', 'GitHubController@redirectToProvider')->name('githublogin');
+
+Route::get('/github/callback', 'GitHubController@handleProviderCallback')->name('githubcallback');
+
+Route::post('/github/import', 'GitHubController@importGitHubKeys')->name('githubpost');
