@@ -62,6 +62,9 @@ class EditProfile extends FormRequest
         $validator->sometimes('password', 'min:8|string', function($input) {
             return !empty($input->password);
         });
+        $validator->sometimes('bio', 'min:10|string|max:2500', function($input) {
+            return !empty($input->bio);
+        });
         $validator->sometimes('profilepic', 'image|mimes:jpeg,png,jpg,gif,svg|max:4096', function($input) {
             return !empty($input->profilepic);
         });

@@ -41,19 +41,28 @@
                     </div>
                 </div>
             </div>
+            <div class="ui one column centered grid">
+                <div class="center aligned column">
+                    <div class="field">
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" id="bio" rows="4">{{ Auth::user()->bio }}</textarea>
+                        <small id="bio">Describe yourself! (Full Markdown supported)</small>
+                    </div>
+                </div>
+            </div>
             <div class="ui two column centered grid">
                 <div class="center aligned column">
                     <div class="field">
                         <label for="userName">Username</label>
                         <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}">
-                        <small id="nameHelp">It must be unique, alphanumeric.</small>
+                        <small id="nameHelp">It must be unique, alphanumeric. Warning! Your old username is available immediately after change! Keep in mind that this could break some Akmey clients.</small>
                     </div>
                 </div>
                 <div class="center aligned column">
                     <div class="field">
                         <label for="email">Email</label>
                         <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}">
-                        <small id="emailHelp">If you change that, you need to confirm the new address before using it.</small>
+                        <small id="emailHelp">If you change the e-mail, you need to confirm the new address before using it.</small>
                     </div>
                 </div>
             </div>
@@ -62,7 +71,7 @@
                     <div class="field">
                         <label for="password">New Password</label>
                         <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123">
-                        <small id="passwordHelp">Choose a faster, stronger, better password!</small>
+                        <small id="passwordHelp">Choose a faster, stronger, better password! (8 chars min.)</small>
                     </div>
                 </div>
                 <div class="center aligned column">
@@ -76,6 +85,7 @@
             <div class="ui two column centered grid">
                 <div class="center aligned column">
                     <button type="submit" class="ui primary button">Save</button>
+                    <a href="{{ url('/u/'.Auth::user()->name) }}" class="ui grey button">Profile page</a>
                 </div>
             </div>
         </form>

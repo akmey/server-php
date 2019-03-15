@@ -18,6 +18,7 @@ class DeleteAccountController extends Controller
     }
 
     public function deleteAccount() {
+        Storage::disk('public')->delete(Auth::user()->profilepic);
         Auth::user()->forceDelete();
         return redirect('/');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Hash;
 use App\Key;
+use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests\EditProfile;
 use Illuminate\Support\Facades\Auth;
@@ -90,7 +91,13 @@ class DashboardController extends Controller
             if (!empty($tochange['password'])) {
                 $user->password = Hash::make($tochange['password']);
             }
+            if (!empty($tochange['bio'])) {
+                $user->bio = $tochange['bio'];
+            }
             if (!empty($tochange['profilepic'])) {
+                if ($user->profilepic != 'default.png') {
+                    Storage::disk('public')->delete($user->profilepic);
+                }
                 $user->profilepic = $tochange['profilepic']->store('profilepics', 'public');
             }
             $user->save();

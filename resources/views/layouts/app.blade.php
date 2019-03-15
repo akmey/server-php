@@ -26,9 +26,6 @@
                 <a class="header item" href="{{ url('/') }}">
                     {{ config('app.name', 'Akmey') }}
                 </a>
-                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>-->
 
                 <div class="right menu" id="navbarSupportedContent">
                     {{--<!-- Left Side Of Navbar -->
@@ -50,16 +47,19 @@
                                 <img class="ui avatar circular image" src="/storage/{{ Auth::user()->profilepic }}"><span>{{ Auth::user()->name }}</span> <i class="dropdown icon"></i>
 
                                 <div class="menu">
+                                    <a class="item" href="{{ url('/u/'.Auth::user()->name) }}">
+                                        <i class="user icon"></i> My profile
+                                    </a>
                                     <a class="item" href="{{ route('dashboard') }}">
-                                        Dashboard
+                                        <i class="dashboard icon"></i> Dashboard
                                     </a>
                                     <a class="item" href="{{ route('dashboardapps') }}">
-                                        OAuth Apps
+                                        <i class="code icon"></i> OAuth Apps
                                     </a>
                                     <a class="item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="logout icon"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

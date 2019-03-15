@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Markdown;
+use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
@@ -12,7 +13,7 @@ class PublicController extends Controller
         if (empty($user)) {
             return abort(404);
         } else {
-            return view('profile', ['user' => $user]);
+            return view('profile', ['user' => $user, 'bio' => Markdown::convertToHtml($user->bio)]);
         }
     }
 }
