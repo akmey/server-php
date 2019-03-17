@@ -14,14 +14,19 @@ class APIController extends Controller
         if (empty($request->input('key'))) {
             return response()->json(['error' => 'missing_key', 'message' => 'missing key'], 400);
         } else {
-            $request->validate([
-                'key' => 'string|unique:keys'
-            ]);
-            $key = new Key;
-            $key->key = $request->input('key');
-            $key->user()->associate(Auth::User());
-            $key->save();
-            return response()->json(['success' => true, 'key' => $key], 201);
+            // if (Auth::user()->can('create', Key::class)) { // FIXME: this wil always return false
+            if (Auth::user()->can('create', Key::first())) {  // This seems to work better
+                $request->validate([
+                    'key' => 'string|unique:keys'
+                ]);
+                $key = new Key;
+                $key->key = $request->input('key');
+                $key->user()->associate(Auth::User());
+                $key->save();
+                return response()->json(['success' => true, 'key' => $key], 201);
+            } else {
+                return response()->json(['error' => 'not_authorized', 'message' => 'You cannot create keys'], 401);
+            }
         }
     }
 
@@ -33,7 +38,7 @@ class APIController extends Controller
             $key = Key::find($keyid);
             if (empty($key)) {
                 return response()->json(['error' => 'not_found', 'message' => 'This key does not exist.'], 404);
-            } elseif ($key->user_id != Auth::id()) {
+            } elseif (Auth::user()->cant('update', $key)) {
                 return response()->json(['error' => 'not_authorized', 'message' => 'You cannot edit this key (it\'s not your key)'], 403);
             } else {
                 $key->comment = $request->input('comment');
@@ -48,7 +53,7 @@ class APIController extends Controller
         $key = Key::find($keyid);
         if (empty($key)) {
             return response()->json(['error' => 'not_found', 'message' => 'This key does not exist.'], 404);
-        } elseif ($key->user_id != Auth::id()) {
+        } elseif (Auth::user()->cant('update', $key)) {
             return response()->json(['error' => 'not_authorized', 'message' => 'You cannot delete this key (it\'s not your key)'], 403);
         } else {
             $key->delete();

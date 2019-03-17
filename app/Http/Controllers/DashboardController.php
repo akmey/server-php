@@ -36,10 +36,10 @@ class DashboardController extends Controller
         if (empty($key)) {
             abort(404);
         }
-        if ($key->user != Auth::User()) {
-            abort(403);
-        } else {
+        if (Auth::user()->can('update', $key)) {
             return view('edit', ['key' => $key, 'status' => null]);
+        } else {
+            abort(403);
         }
     }
 
@@ -48,12 +48,12 @@ class DashboardController extends Controller
         if (empty($key)) {
             abort(404);
         }
-        if ($key->user != Auth::User()) {
-            abort(403);
-        } else {
+        if (Auth::user()->can('update', $key)) {
             $key->comment = $request->input('name');
             $key->save();
             return view('edit', ['key' => $key, 'status' => 'Saved!']);
+        } else {
+            abort(403, 'You cannot edit this key.');
         }
     }
 
@@ -62,11 +62,11 @@ class DashboardController extends Controller
         if (empty($key)) {
             abort(404);
         }
-        if ($key->user != Auth::User()) {
-            abort(403);
-        } else {
+        if (Auth::user()->can('delete', $key)) {
             $key->delete();
             return redirect('dashboard');
+        } else {
+            abort(403, 'You cannot delete this key.');
         }
     }
 
