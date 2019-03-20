@@ -9,7 +9,7 @@
             @csrf
 
             <div class="field{{ $errors->has('email') ? ' error' : '' }}">
-                <label for="email">{{ __('E-Mail Address') }}</label>
+                <label for="email">{{ __('auth.email') }}</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
 
                 {{-- @if ($errors->has('email'))
@@ -20,7 +20,7 @@
             </div>
 
             <div class="field{{ $errors->has('password') ? ' error' : '' }}">
-                <label for="password">{{ __('Password') }}</label>
+                <label for="password">{{ __('auth.password') }}</label>
                 <input id="password" type="password" name="password" required>
 
                 {{-- @if ($errors->has('password'))

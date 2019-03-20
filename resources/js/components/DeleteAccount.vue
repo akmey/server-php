@@ -1,16 +1,17 @@
 <template>
-    <a @click.prevent="deleteAccountSubmit" href="#" class="ui red button">Delete my account<br/>This will delete all your account data from this server.</a>
+    <a @click.prevent="deleteAccountSubmit" href="#" class="ui red button">{{ lang.get('dashboard.settings.delete._') }}<br/>{{ lang.get('dashboard.settings.delete.tooltip') }}</a>
 </template>
 
 <script>
     import swal from 'sweetalert';
 
     export default {
+        props: ['lang'],
         methods: {
             deleteAccountSubmit() {
                 swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, your account and your keys will be removed from Akmey server.",
+                    title: this.lang.get('dashboard.settings.delete.one.title'),
+                    text: this.lang.get('dashboard.settings.delete.one.text'),
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -19,7 +20,7 @@
                     if (willDelete) {
                         fetch('/delete-account').then(res => {
                             if (!res.ok) return false;
-                            swal("That's it, your account will disappear from servers in a while.", {
+                            swal(this.lang.get('dashboard.settings.delete.two'), {
                                 icon: "success",
                             }).then(val => {
                                 window.location.assign('/');

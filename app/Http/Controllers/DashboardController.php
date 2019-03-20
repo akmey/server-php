@@ -51,7 +51,7 @@ class DashboardController extends Controller
         if (Auth::user()->can('update', $key)) {
             $key->comment = $request->input('name');
             $key->save();
-            return view('edit', ['key' => $key, 'status' => 'Saved!']);
+            return view('edit', ['key' => $key, 'status' => __('layout.saved')]);
         } else {
             abort(403, 'You cannot edit this key.');
         }
@@ -101,9 +101,9 @@ class DashboardController extends Controller
                 $user->profilepic = $tochange['profilepic']->store('profilepics', 'public');
             }
             $user->save();
-            return view('edit-profile', ['status' => 'Saved!', 'error' => null]);
+            return view('edit-profile', ['status' => __('layout.saved'), 'error' => null]);
         } else {
-            return view('edit-profile', ['status' => null, 'error' => 'Wrong old password']);
+            return view('edit-profile', ['status' => null, 'error' => __('auth.oldpasswd')]);
         }
     }
 }

@@ -2,7 +2,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Bootstrap
+// Semantic
 @import '~semantic-ui-css/semantic';
 
 .minimargin {
@@ -24,6 +24,15 @@
     }
     .ui.list > .item .description {
         color: unset !important;
+    }
+    .field > input, .field > textarea, .ui.input > input {
+        background-color: #404040 !important;
+        color: #c8c8c8 !important;
+    }
+    .ui.label:not(.ribbon) {
+        background-color: #1B1C1D !important;
+        border-color: #c8c8c8 !important;
+        color: #FFFFFF !important;
     }
 }
 

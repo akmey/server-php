@@ -50,3 +50,5 @@ Route::get('/github/login', 'GitHubController@redirectToProvider')->name('github
 Route::get('/github/callback', 'GitHubController@handleProviderCallback')->name('githubcallback');
 
 Route::post('/github/import', 'GitHubController@importGitHubKeys')->name('githubpost');
+
+Route::get('/locale.json', 'LocaleController@getJSON')->name('localejson');

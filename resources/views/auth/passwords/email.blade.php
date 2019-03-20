@@ -14,7 +14,7 @@
             @csrf
 
             <div class="field{{ $errors->has('email') ? ' error' : '' }}">
-                <label for="email">{{ __('E-Mail Address') }}</label>
+                <label for="email">{{ __('auth.email') }}</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
             @if ($errors->has('email'))
@@ -23,7 +23,7 @@
                 </div>
             @endif
             <button type="submit" class="ui primary button">
-                {{ __('Send Password Reset Link') }}
+                {{ __('auth.reset.submit') }}
             </button>
         </form>
     </div>

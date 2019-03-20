@@ -1,17 +1,17 @@
 <template>
-    <a @click.prevent="deleteSubmit" href="#" class="ui red button">Delete</a>
+    <a @click.prevent="deleteSubmit" href="#" class="ui red button">{{ lang.get('dashboard.edit.delete') }}</a>
 </template>
 
 <script>
     import swal from 'sweetalert';
 
     export default {
-        props: ['keyid'],
+        props: ['keyid', 'lang'],
         methods: {
             deleteSubmit() {
                 swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, the key will be removed from Akmey server.",
+                    title: this.lang.get('dashboard.edit.popup.one.title'),
+                    text: this.lang.get('dashboard.edit.popup.one.desc'),
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -20,7 +20,7 @@
                     if (willDelete) {
                         fetch('/delete/' + this.keyid).then(res => {
                             if (!res.ok) return false;
-                            swal("That's it, your key will disappear from servers in a while.", {
+                            swal(this.lang.get('dashboard.edit.popup.two'), {
                                 icon: "success",
                             }).then(val => {
                                 window.location.assign('/dashboard');

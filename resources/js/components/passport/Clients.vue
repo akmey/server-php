@@ -2,14 +2,14 @@
     <div>
         <div class="ui top attached tabular menu" v-bind:class="{ inverted: dark }">
             <span class="active item">
-                OAuth Clients
+                {{ lang.get('dashboard.oauth.dev.clients._') }}
             </span>
 
             <div class="right menu">
                 <div class="item">
                     <a class="ui labeled icon primary button" @click="showCreateClientForm">
                         <i class="plus icon"></i>
-                        Create New Client
+                        {{ lang.get('dashboard.oauth.dev.clients.add') }}
                     </a>
                 </div>
             </div>
@@ -17,15 +17,15 @@
         <div class="ui bottom attached segment" v-bind:class="{ inverted: dark }">
             <!-- Current Clients -->
             <p v-if="clients.length === 0">
-                You have not created any OAuth clients.
+                {{ lang.get('dashboard.oauth.dev.clients.none') }}
             </p>
 
             <table class="ui celled table" v-bind:class="{ inverted: dark }" v-if="clients.length > 0">
                 <thead>
                     <tr>
-                        <th>Client ID</th>
-                        <th>Name</th>
-                        <th>Secret</th>
+                        <th>{{ lang.get('dashboard.oauth.dev.clients.table.id') }}</th>
+                        <th>{{ lang.get('dashboard.oauth.dev.clients.table.name') }}</th>
+                        <th>{{ lang.get('dashboard.oauth.dev.clients.table.secret') }}</th>
                         <th><i class="edit icon"></i></th>
                         <th><i class="delete icon"></i></th>
                     </tr>
@@ -51,14 +51,14 @@
                         <!-- Edit Button -->
                         <td style="vertical-align: middle;">
                             <a class="ui primary button" tabindex="-1" @click="edit(client)">
-                                Edit
+                                {{ lang.get('dashboard.oauth.dev.clients.table.edit') }}
                             </a>
                         </td>
 
                         <!-- Delete Button -->
                         <td style="vertical-align: middle;">
                             <a class="ui red button" @click="destroy(client)">
-                                Delete
+                                {{ lang.get('dashboard.oauth.dev.clients.table.delete') }}
                             </a>
                         </td>
                     </tr>
@@ -67,14 +67,14 @@
         </div>
 
         <!-- Create Client Modal -->
-        <div class="ui small modal" id="modal-create-client" role="dialog">
+        <div class="ui small basic modal" id="modal-create-client" role="dialog">
             <div class="header">
-                Create Client
+                {{ lang.get('dashboard.oauth.dev.clients.form._') }}
             </div>
             <div class="content">
                 <!-- Form Errors -->
                 <div class="ui error message" v-if="createForm.errors.length > 0">
-                    <div class="header"><strong>Whoops!</strong> Something went wrong!</div>
+                    <div class="header"><strong>{{ lang.get('dashboard.oauth.dev.clients.form.err.title') }}</strong> {{ lang.get('dashboard.oauth.dev.clients.form.err.sub') }}</div>
                     <ul>
                         <li v-for="error in createForm.errors">
                             {{ error }}
@@ -86,48 +86,48 @@
                 <form class="ui form" role="form">
                     <!-- Name -->
                     <div class="field">
-                        <label for="create-client-name">Name</label>
-                        <input id="create-client-name" type="text" class="form-control"
+                        <label for="create-client-name">{{ lang.get('dashboard.oauth.dev.clients.form.name._') }}</label>
+                        <input id="create-client-name" type="text"
                                                     @keyup.enter="store" v-model="createForm.name">
 
-                        <span class="form-text text-muted">
-                            Something your users will recognize and trust.
-                        </span>
+                        <small>
+                            {{ lang.get('dashboard.oauth.dev.clients.form.name.tooltip') }}
+                        </small>
                     </div>
 
                     <!-- Redirect URL -->
                     <div class="field">
-                        <label for="redirect">Redirect URL</label>
+                        <label for="redirect">{{ lang.get('dashboard.oauth.dev.clients.form.redirect._') }}</label>
                         <input type="text" class="form-control" name="redirect"
                                         @keyup.enter="store" v-model="createForm.redirect">
 
-                        <span class="form-text text-muted">
-                            Your application's authorization callback URL.
-                        </span>
+                        <small>
+                            {{ lang.get('dashboard.oauth.dev.clients.form.redirect.tooltip') }}
+                        </small>
                     </div>
                 </form>
             </div>
 
             <!-- Modal Actions -->
             <div class="actions">
-                <button type="button" class="ui red deny button" data-dismiss="modal">Close</button>
+                <button type="button" class="ui red deny button" data-dismiss="modal">{{ lang.get('dashboard.oauth.dev.clients.form.close') }}</button>
 
                 <button type="button" class="ui primary button" @click="store">
-                    Create
+                    {{ lang.get('dashboard.oauth.dev.clients.form.create') }}
                 </button>
             </div>
         </div>
 
 
         <!-- Edit Client Modal -->
-        <div class="ui small modal" id="modal-edit-client" role="dialog">
+        <div class="ui small basic modal" id="modal-edit-client" role="dialog">
             <div class="header">
-                Edit Client
+                {{ lang.get('dashboard.oauth.dev.clients.form.edit') }}
             </div>
             <div class="content">
                 <!-- Form Errors -->
                 <div class="ui error message" v-if="editForm.errors.length > 0">
-                    <div class="header"><strong>Whoops!</strong> Something went wrong!</div>
+                    <div class="header"><strong>{{ lang.get('dashboard.oauth.dev.clients.form.err.title') }}</strong> {{ lang.get('dashboard.oauth.dev.clients.form.err.sub') }}</div>
                     <ul>
                         <li v-for="error in editForm.errors">
                             {{ error }}
@@ -139,23 +139,23 @@
                 <form class="ui form" role="form">
                     <!-- Name -->
                     <div class="field">
-                        <label for="edit-client-name">Name</label>
+                        <label for="edit-client-name">{{ lang.get('dashboard.oauth.dev.clients.form.name._') }}</label>
                         <input id="edit-client-name" type="text"
                                                     @keyup.enter="update" v-model="editForm.name">
 
-                        <span class="form-text text-muted">
-                            Something your users will recognize and trust.
-                        </span>
+                        <small>
+                            {{ lang.get('dashboard.oauth.dev.clients.form.name.tooltip') }}
+                        </small>
                     </div>
 
                     <!-- Redirect URL -->
                     <div class="field">
-                        <label for="redirect">Redirect URL</label>
+                        <label for="redirect">{{ lang.get('dashboard.oauth.dev.clients.form.redirect._') }}</label>
                         <input type="text" name="redirect"
                                         @keyup.enter="update" v-model="editForm.redirect">
 
                         <span class="form-text text-muted">
-                            Your application's authorization callback URL.
+                            {{ lang.get('dashboard.oauth.dev.clients.form.redirect.tooltip') }}
                         </span>
                     </div>
                 </form>
@@ -163,10 +163,10 @@
 
             <!-- Modal Actions -->
             <div class="actions">
-                <button type="button" class="ui red deny button" data-dismiss="modal">Close</button>
+                <button type="button" class="ui red deny button" data-dismiss="modal">{{ lang.get('dashboard.oauth.dev.clients.form.close') }}</button>
 
                 <button type="button" class="ui primary button" @click="update">
-                   Save changes
+                   {{ lang.get('dashboard.oauth.dev.clients.form.save') }}
                 </button>
             </div>
         </div>
@@ -175,7 +175,7 @@
 
 <script>
     export default {
-        props: ['dark'],
+        props: ['dark', 'lang'],
         /*
          * The component's data.
          */

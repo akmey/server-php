@@ -41,7 +41,7 @@ class KeyAdded extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('A key has been added to your account')
+            ->subject(__('notification.added.subject'))
             ->markdown('mail.key.added', ['url' => url('dashboard'), 'key' => $this->key]);
     }
 

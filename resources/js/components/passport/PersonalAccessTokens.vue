@@ -2,14 +2,14 @@
     <div>
         <div class="ui top attached tabular menu" v-bind:class="{ inverted: dark }">
             <span class="active item">
-                Personal Access Tokens
+                {{ lang.get('dashboard.oauth.dev.pat._') }}
             </span>
 
             <div class="right menu">
                 <div class="item">
                     <a class="ui labeled icon primary button" @click="showCreateTokenForm">
                         <i class="plus icon"></i>
-                        Create New Token
+                        {{ lang.get('dashboard.oauth.dev.pat.add') }}
                     </a>
                 </div>
             </div>
@@ -17,14 +17,14 @@
         <div class="ui bottom attached segment" v-bind:class="{ inverted: dark }">
             <!-- No Tokens Notice -->
             <p v-if="tokens.length === 0">
-                You have not created any personal access tokens.
+                {{ lang.get('dashboard.oauth.dev.pat.none') }}
             </p>
 
             <!-- Personal Access Tokens -->
             <table class="ui celled table" v-bind:class="{ inverted: dark }" v-if="tokens.length > 0">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>{{ lang.get('dashboard.oauth.dev.pat.table.name') }}</th>
                         <th><i class="delete icon"></i></th>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                         <!-- Delete Button -->
                         <td style="vertical-align: middle;">
                             <a class="ui red button" @click="revoke(token)">
-                                Delete
+                                {{ lang.get('dashboard.oauth.dev.pat.table.delete') }}
                             </a>
                         </td>
                     </tr>
@@ -48,15 +48,15 @@
         </div>
 
         <!-- Create Token Modal -->
-        <div class="ui small modal" id="modal-create-token" tabindex="-1" role="dialog">
+        <div class="ui small basic modal" id="modal-create-token" tabindex="-1" role="dialog">
             <div class="header">
-                Create Token
+                {{ lang.get('dashboard.oauth.dev.pat.form._') }}
             </div>
 
             <div class="content">
                 <!-- Form Errors -->
                 <div class="ui error message" v-if="form.errors.length > 0">
-                    <div class="header"><strong>Whoops!</strong> Something went wrong!</div>
+                    <div class="header"><strong>{{ lang.get('dashboard.oauth.dev.pat.form.err.title') }}</strong> {{ lang.get('dashboard.oauth.dev.pat.form.err.sub') }}</div>
                     <ul>
                         <li v-for="error in form.errors">
                             {{ error }}
@@ -68,13 +68,13 @@
                 <form role="form" @submit.prevent="store" class="ui form">
                     <!-- Name -->
                     <div class="field">
-                        <label for="create-token-name">Name</label>
+                        <label for="create-token-name">{{ lang.get('dashboard.oauth.dev.pat.form.name') }}</label>
                         <input id="create-token-name" type="text" name="name" v-model="form.name">
                     </div>
 
                     <!-- Scopes -->
                     <div v-if="scopes.length > 0">
-                        <label>Scopes</label>
+                        <label>{{ lang.get('dashboard.oauth.dev.pat.form.scopes') }}</label>
 
                         <div class="grouped fields">
                             <div v-for="scope in scopes" class="field">
@@ -95,24 +95,23 @@
 
             <!-- Modal Actions -->
             <div class="actions">
-                <button type="button" class="ui deny red button" data-dismiss="modal">Close</button>
+                <button type="button" class="ui deny red button" data-dismiss="modal">{{ lang.get('dashboard.oauth.dev.pat.form.close') }}</button>
 
                 <button type="button" class="ui blue button" @click="store">
-                    Create
+                    {{ lang.get('dashboard.oauth.dev.pat.form.create') }}
                 </button>
             </div>
         </div>
 
         <!-- Access Token Modal -->
-        <div class="ui modal" id="modal-access-token" role="dialog">
+        <div class="ui basic modal" id="modal-access-token" role="dialog">
             <div class="header">
-                Personal Access Token
+                {{ lang.get('dashboard.oauth.dev.pat.form.pat') }}
             </div>
 
             <div class="content">
                 <p>
-                    Here is your new personal access token. This is the only time it will be shown so don't lose it!
-                    You may now use this token to make API requests.
+                    {{ lang.get('dashboard.oauth.dev.pat.form.created') }}
                 </p>
                 <form class="ui form" @submit.prevent="false">
                     <div class="field">
@@ -123,7 +122,7 @@
 
             <!-- Modal Actions -->
             <div class="actions">
-                <button type="button" class="ui red deny button" data-dismiss="modal">Close</button>
+                <button type="button" class="ui red deny button" data-dismiss="modal">{{ lang.get('dashboard.oauth.dev.pat.form.close') }}</button>
             </div>
         </div>
     </div>
@@ -131,7 +130,7 @@
 
 <script>
     export default {
-        props: ['dark'],
+        props: ['dark', 'lang'],
         /*
          * The component's data.
          */

@@ -41,7 +41,7 @@ class KeyRemoved extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('A key has been removed from your account')
+            ->subject(__('notification.removed.subject'))
             ->markdown('mail.key.removed', ['url' => url('dashboard'), 'key' => $this->key]);
     }
 

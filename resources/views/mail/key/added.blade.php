@@ -1,12 +1,12 @@
 @component('mail::message')
-# Hey {{ $key->user->name }}
+# {{ __('notification.added.title', ['name' => $key->user->name]) }}
 
-Someone (probably you) added a key to your account. If it wasn't you, someone probably hacked into your account, please reset your password and delete the key.
+{{ __('notification.added.text1') }}
 
 @component('mail::button', ['url' => $url])
-Go to Dashboard
+{{ __('notification.added.btn') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('notification.added.text2') }}<br>
 {{ config('app.name') }}
 @endcomponent

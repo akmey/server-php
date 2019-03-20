@@ -3,7 +3,7 @@
 @section('content')
 <div class="ui container">
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
-        <h2 class="ui center aligned header">Dashboard</h2>
+        <h2 class="ui center aligned header">{{ __('dashboard.title') }}</h2>
 
         @if (session('status'))
             <div class="ui success message" role="alert">
@@ -11,50 +11,50 @@
             </div>
         @endif
 
-        <h3 class="ui center aligned header">You are logged in!</h3>
+        <h3 class="ui center aligned header">{{ __('dashboard.logged') }}</h3>
 
-        <p>Connect to gui@<span/>{{ env('SSH_ACCESS') }} with your favourite SSH client to add your keys or paste your key down below (without key comment).</p>
+        <p>{{ __('dashboard.sshnotice', ['ssh' => env('SSH_ACCESS')]) }}</p>
 
-        <new-key csrf="{{ csrf_token() }}"></new-key>
+        <new-key csrf="{{ csrf_token() }}" :lang="lang"></new-key>
 
         <div class="ui pointing label">
-                We accept major key types.
+            {{ __('dashboard.newkey.tooltip') }}
         </div>
 
         <table class="ui celled table" v-bind:class="{ inverted: dark }">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Key name</th>
-                    <th scope="col">Content</th>
-                    <th scope="col">Last updated</th>
+                    <th scope="col">{{ __('dashboard.table.id') }}</th>
+                    <th scope="col">{{ __('dashboard.table.name') }}</th>
+                    <th scope="col">{{ __('dashboard.table.key') }}</th>
+                    <th scope="col">{{ __('dashboard.table.last') }}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (Auth::user()->keys as $key)
                 <tr>
-                    <td data-label="#"><strong>{{ $loop->iteration }}</strong></td>
-                    <td data-label="Key name">{{ $key->comment }}</td>
-                    <td data-label="Content" class="break"><code>{{ $key->key }}</code></td>
-                    <td data-label="Last updated">{{ $key->updated_at }}<br/><a href="/edit/{{ $key->id }}" class="ui primary button">Edit</a></td>
+                    <td data-label="{{ __('dashboard.table.id') }}"><strong>{{ $loop->iteration }}</strong></td>
+                    <td data-label="{{ __('dashboard.table.name') }}">{{ $key->comment }}</td>
+                    <td data-label="{{ __('dashboard.table.key') }}" class="break"><code>{{ $key->key }}</code></td>
+                    <td data-label="{{ __('dashboard.table.last') }}">{{ $key->updated_at }}<br/><a href="/edit/{{ $key->id }}" class="ui primary button">{{ __('dashboard.table.edit') }}</a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <h3>Settings</h3>
-        <a href="{{ url('/github/login') }}" class="ui teal labeled icon button"><i class="github icon"></i> Import keys from a GitHub account</a>
+        <h3>{{ __('dashboard.settings._') }}</h3>
+        <a href="{{ url('/github/login') }}" class="ui teal labeled icon button"><i class="github icon"></i> {{ __('dashboard.settings.github') }}</a>
         <div class="ui buttons" role="group">
-            <a href="/export" class="ui primary button">Export my account</a>
-            <div class="or"></div>
-            <a href="javascript:;" onclick="document.getElementById('jsonexport').click();" class="ui primary button">Import my account</a>
+            <a href="/export" class="ui primary button">{{ __('dashboard.settings.export') }}</a>
+            <div class="or" data-text="{{ __('dashboard.settings.or') }}"></div>
+            <a href="javascript:;" onclick="document.getElementById('jsonexport').click();" class="ui primary button">{{ __('dashboard.settings.import') }}</a>
         </div>
         <br><br>
         <div class="ui buttons" role="group">
-            <delete-account></delete-account>
-            <noscript><a href="/delete-account" class="ui red button">Delete my account</a></noscript>
-            <a href="/my-profile" class="ui primary button">Change my profile<br/><span class="badge badge-secondary">Edit your username, e-mail address</span></a>
-            <a href="/dashboard/apps" class="ui button">OAuth Apps<br/><span class="badge badge-primary">Open the OAuth Apps settings</span></a>
+            <delete-account :lang="lang"></delete-account>
+            <noscript><a href="/delete-account" class="ui red button">{{ __('dashboard.settings.delete._') }}</a></noscript>
+            <a href="/my-profile" class="ui primary button">{{ __('dashboard.settings.edit._') }}<br/><span>{{ __('dashboard.settings.edit.tooltip') }}</span></a>
+            <a href="/dashboard/apps" class="ui button">{{ __('dashboard.settings.oauth._') }}<br/><span class="badge badge-primary">{{ __('dashboard.settings.oauth.tooltip') }}</span></a>
         </div>
     </div>
 </div>

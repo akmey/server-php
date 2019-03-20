@@ -3,17 +3,17 @@
 @section('content')
 <div class="ui container">
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
-        <h2 class="ui center aligned header">{{ __('Verify Your Email Address') }}</h2>
+        <h2 class="ui center aligned header">{{ __('auth.emailcheck.title') }}</h2>
 
         <div class="card-body">
             @if (session('resent'))
                 <div class="ui success message" role="alert">
-                    {{ __('A fresh verification link has been sent to your email address.') }}
+                    {{ __('auth.emailcheck.sent') }}
                 </div>
             @endif
 
-            {{ __('Before proceeding, please check your email for a verification link.') }}
-            {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+            {{ __('auth.emailcheck.one') }}
+            @lang('auth.emailcheck.two._', ['link' => '<a href="' . route('verification.resend') . '">' . __('auth.emailcheck.two.link') . '</a>']);
         </div>
     </div>
 </div>

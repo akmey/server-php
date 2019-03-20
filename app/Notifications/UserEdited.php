@@ -41,7 +41,7 @@ class UserEdited extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Your user was edited')
+            ->subject(__('notification.user.subject'))
             ->markdown('mail.user.edited', ['url' => url('my-profile'), 'user' => $this->user]);
     }
 

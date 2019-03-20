@@ -1,12 +1,12 @@
 @component('mail::message')
-# Hey {{ $user->name }}
+# {{ __('notification.user.title', ['name' => $user->name]) }}
 
-Someone (probably you) edited your account details. If it wasn't you, someone probably hacked into your account, please reset your password.
+{{ __('notification.user.text1') }}
 
 @component('mail::button', ['url' => $url])
-Go to my profile
+{{ __('notification.user.btn') }}
 @endcomponent
 
-Thanks,<br>
+{{ __('notification.user.text2') }}<br>
 {{ config('app.name') }}
 @endcomponent

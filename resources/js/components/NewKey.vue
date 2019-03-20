@@ -2,7 +2,7 @@
     <form @submit.prevent="sendForm">
         <div class="ui fluid labeled input">
             <div class="ui label">
-                New key
+                {{ lang.get('dashboard.newkey._') }}
             </div>
             <input name="key" v-model="keyinput" class="form-control" aria-label="New key (paste it without comments)"></input>
         </div>
@@ -12,12 +12,12 @@
 
 <script>
     export default {
-        props: ['keyinput', 'csrf'],
-        /*data: function () {
+        props: ['lang', 'csrf'],
+        data: function () {
             return {
-                keyinput: this.keyinput
+                keyinput: ''
             }
-        },*/
+        },
         methods: {
             sendForm: function(e) {
                 if (!this.keyinput) { alert('Key is empty'); return false; }

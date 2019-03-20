@@ -6,8 +6,8 @@
             <h2 class="ui icon center aligned header">
                 <i class="github icon"></i>
                 <div class="content">
-                    Great!
-                    <div class="sub header">Now choose the keys you want to import.</div>
+                    {{ __('dashboard.github.title') }}
+                    <div class="sub header">{{ __('dashboard.github.head') }}</div>
                 </div>
             </h2>
             <form action="/github/import" method="post">
@@ -24,7 +24,7 @@
                     </div>
                     <br><br>
                 @endforeach
-                <button class="ui primary button" type="submit">Import!</button>
+                <button class="ui primary button" type="submit">{{ __('dashboard.github.btn') }}</button>
             </form>
         </div>
     </div>

@@ -48,18 +48,18 @@
 
                                 <div class="menu">
                                     <a class="item" href="{{ url('/u/'.Auth::user()->name) }}">
-                                        <i class="user icon"></i> My profile
+                                        <i class="user icon"></i> {{ __('layout.user.profile') }}
                                     </a>
                                     <a class="item" href="{{ route('dashboard') }}">
-                                        <i class="dashboard icon"></i> Dashboard
+                                        <i class="dashboard icon"></i> {{ __('layout.user.dashboard') }}
                                     </a>
                                     <a class="item" href="{{ route('dashboardapps') }}">
-                                        <i class="code icon"></i> OAuth Apps
+                                        <i class="code icon"></i> {{ __('layout.user.oauth') }}
                                     </a>
                                     <a class="item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        <i class="logout icon"></i> {{ __('Logout') }}
+                                        <i class="logout icon"></i> {{ __('layout.user.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -78,9 +78,9 @@
                 <div class="ui container">
                     <div class="ui negative message">
                         <div class="header">
-                            Akmey works with JS.
+                            {{ __('layout.js._') }}
                         </div>
-                        <p>We understand that JavaScript may annoy you, but certain parts of Akmey needs JS to work. However, we make the possible to make Akmey accessible without JS. Try to activate it if you have problems</p>
+                        <p>{{ __('layout.js.tooltip') }}</p>
                     </div>
                 </div>
                 <br/>

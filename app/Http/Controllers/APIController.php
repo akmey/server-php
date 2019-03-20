@@ -14,7 +14,7 @@ class APIController extends Controller
         if (empty($request->input('key'))) {
             return response()->json(['error' => 'missing_key', 'message' => 'missing key'], 400);
         } else {
-            // if (Auth::user()->can('create', Key::class)) { // FIXME: this wil always return false
+            // if (Auth::user()->can('create', Key::class)) { // FIXME: this will always return false
             if (Auth::user()->can('create', Key::first())) {  // This seems to work better
                 $request->validate([
                     'key' => 'string|unique:keys'

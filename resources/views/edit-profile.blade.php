@@ -3,7 +3,7 @@
 @section('content')
 <div class="ui container">
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
-        <h2 class="ui center aligned header">Edit my profile</h2>
+        <h2 class="ui center aligned header">{{ __('dashboard.profile._') }}</h2>
 
         @if ($errors->any())
         <div class="ui error message">
@@ -17,7 +17,7 @@
 
         @if($status)
             <div class="ui success message" role="alert">
-                {{ $status }} <a href="/dashboard">Go back.</a>
+                {{ $status }} <a href="/dashboard">{{ __('layout.back') }}</a>
             </div>
         @endif
 
@@ -35,57 +35,57 @@
                 </div>
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="profilePicture">Profile picture</label>
+                        <label for="profilePicture">{{ __('dashboard.profile.picture._') }}</label>
                         <input type="file" name="profilepic" id="profilePicture">
-                        <small id="profilePicture">Upload a nice profile picture!</small>
+                        <small id="profilePicture">{{ __('dashboard.profile.picture.tooltip') }}</small>
                     </div>
                 </div>
             </div>
             <div class="ui one column centered grid">
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="bio">Bio</label>
+                        <label for="bio">{{ __('dashboard.profile.bio._') }}</label>
                         <textarea name="bio" id="bio" rows="4">{{ Auth::user()->bio }}</textarea>
-                        <small id="bio">Describe yourself! (Full Markdown supported)</small>
+                        <small id="bio">{{ __('dashboard.profile.bio.tooltip') }}</small>
                     </div>
                 </div>
             </div>
             <div class="ui two column centered grid">
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="userName">Username</label>
+                        <label for="userName">{{ __('dashboard.profile.username._') }}</label>
                         <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}">
-                        <small id="nameHelp">It must be unique, alphanumeric. Warning! Your old username is available immediately after change! Keep in mind that this could break some Akmey clients.</small>
+                        <small id="nameHelp">{{ __('dashboard.profile.username.tooltip') }}</small>
                     </div>
                 </div>
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="email">Email</label>
+                        <label for="email">{{ __('dashboard.profile.email._') }}</label>
                         <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}">
-                        <small id="emailHelp">If you change the e-mail, you need to confirm the new address before using it.</small>
+                        <small id="emailHelp">{{ __('dashboard.profile.email.tooltip') }}</small>
                     </div>
                 </div>
             </div>
             <div class="ui two column centered grid">
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="password">New Password</label>
+                        <label for="password">{{ __('dashboard.profile.newpasswd._') }}</label>
                         <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123">
-                        <small id="passwordHelp">Choose a faster, stronger, better password! (8 chars min.)</small>
+                        <small id="passwordHelp">{{ __('dashboard.profile.newpasswd.tooltip') }}</small>
                     </div>
                 </div>
                 <div class="center aligned column">
                     <div class="field">
-                        <label for="oldpasswd">Old Password</label>
+                        <label for="oldpasswd">{{ __('dashboard.profile.oldpasswd._') }}</label>
                         <input type="password" id="oldpasswd" name="oldpasswd" aria-describedby="oldpasswdHelp" placeholder="oldpasswd123" required="">
-                        <small id="oldpasswdHelp">Please retype your password for any change.</small>
+                        <small id="oldpasswdHelp">{{ __('dashboard.profile.oldpasswd.tooltip') }}</small>
                     </div>
                 </div>
             </div>
             <div class="ui two column centered grid">
                 <div class="center aligned column">
-                    <button type="submit" class="ui primary button">Save</button>
-                    <a href="{{ url('/u/'.Auth::user()->name) }}" class="ui grey button">Profile page</a>
+                    <button type="submit" class="ui primary button">{{ __('dashboard.profile.save') }}</button>
+                    <a href="{{ url('/u/'.Auth::user()->name) }}" class="ui grey button">{{ __('dashboard.profile.page') }}</a>
                 </div>
             </div>
         </form>

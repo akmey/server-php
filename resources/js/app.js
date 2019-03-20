@@ -7,9 +7,11 @@
 
 // require('./bootstrap');
 require('./semantic');
+window.axios = require('axios');
+window.Lang = require('lang.js');
 
 window.Vue = require('vue');
-/* global Vue, $ */
+/* global Vue, $, axios, Lang*/
 
 /**
  * The following block of code may be used to automatically register your
@@ -66,7 +68,9 @@ Vue.component(
 const app = new Vue({ // eslint-disable-line no-unused-vars
     el: '#app',
     data: {
-        dark: false
+        dark: false,
+        messages: {},
+        lang: null
     },
     methods: {
         switchTheme: function(dark) {
@@ -78,6 +82,20 @@ const app = new Vue({ // eslint-disable-line no-unused-vars
                 $('body').removeClass('darkbg');
             }
         }
+    },
+    beforeCreate: function() {
+        axios.get('/locale.json').then(response => {
+            this.messages = response.data;
+            this.lang = new Lang({
+                messages: this.messages,
+                locale: this.messages.defaultlang,
+                fallback: 'en',
+            });
+            return true;
+        }).catch(err => {
+            throw new Error(err);
+        });
+        return true;
     }
 });
 

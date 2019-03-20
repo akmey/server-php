@@ -2,13 +2,13 @@
     <div>
         <div v-if="tokens.length > 0">
             <div class="ui segment" v-bind:dark="dark">
-                <h3 class="ui header">Authorized Applications</h3>
+                <h3 class="ui header">{{ lang.get('dashboard.oauth.apps._') }}</h3>
                 <!-- Authorized Tokens -->
                 <table class="ui celled table" v-bind:dark="dark">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Scopes</th>
+                            <th>{{ lang.get('dashboard.oauth.apps.table.name') }}</th>
+                            <th>{{ lang.get('dashboard.oauth.apps.table.scopes') }}</th>
                             <th><i class="remove icon"></i></th>
                         </tr>
                     </thead>
@@ -30,7 +30,7 @@
                             <!-- Revoke Button -->
                             <td>
                                 <a class="ui red button" @click="revoke(token)">
-                                    Revoke
+                                    {{ lang.get('dashboard.oauth.apps.table.revoke') }}
                                 </a>
                             </td>
                         </tr>
@@ -43,7 +43,7 @@
 
 <script>
     export default {
-        props: ['dark'],
+        props: ['dark', 'lang'],
         /*
          * The component's data.
          */

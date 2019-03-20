@@ -6,35 +6,35 @@
         <h2 class="ui center aligned header">{{ __('Register') }}</h2>
 
         <div class="ui message">
-            <p>Please review the <a href="/privacy?register=1">privacy policy</a>. By clicking "Register", you accept the privacy policy.</p>
+            <p>@lang('auth.policy._', ['link' => '<a href="/privacy?register=1">' . __('auth.policy.link') . '</a>'])</p>
         </div>
 
         <form method="POST" action="{{ route('register') }}" class="ui form{{ !empty($errors->all()) ? ' error' : '' }}">
             @csrf
 
             <div class="field{{ $errors->has('name') ? ' error' : '' }}">
-                <label for="name">{{ __('Username') }}</label>
+                <label for="name">{{ __('auth.username') }}</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
             </div>
 
             <div class="field{{ $errors->has('email') ? ' error' : '' }}">
-                <label for="email">{{ __('E-Mail Address') }}</label>
+                <label for="email">{{ __('auth.email') }}</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
             </div>
 
             <div class="field{{ $errors->has('password') ? ' error' : '' }}">
-                <label for="password">{{ __('Password') }}</label>
+                <label for="password">{{ __('auth.password') }}</label>
                 <input id="password" type="password" name="password" required>
             </div>
 
             <div class="field{{ $errors->has('password') ? ' error' : '' }}">
-                <label for="password-confirm">{{ __('Confirm Password') }}</label>
+                <label for="password-confirm">{{ __('auth.confirm-password') }}</label>
                 <input id="password-confirm" type="password" name="password_confirmation" required>
             </div>
 
             @if (!empty($errors->all()))
                 <div class="ui error message">
-                    <div class="header">Please check these errors and retry :</div>
+                    <div class="header">{{ __('auth.error') }}</div>
                     <div class="content">
                         <ul>
                             @foreach ($errors->all() as $message)
@@ -46,7 +46,7 @@
             @endif
 
             <button type="submit" class="ui primary button">
-                {{ __('Register') }}
+                {{ __('auth.register') }}
             </button>
         </form>
     </div>
