@@ -27,7 +27,7 @@ return [
         'import' => 'Import my account',
         'delete' => [
             '_' => 'Delete my account',
-            'tooltip' => 'This will delete all your account data from this server.',
+            'tooltip' => 'This will delete all your account data from this server',
             'one' => [
                 'title' => 'Are you sure?',
                 'text' => 'Once deleted, your account and your keys will be removed from Akmey server.'
