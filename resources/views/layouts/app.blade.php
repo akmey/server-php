@@ -38,9 +38,9 @@
                         <dark-button v-on:change-theme="switchTheme"></dark-button>
                         <!-- Authentication Links -->
                         @guest
-                            <a class="item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="item" href="{{ route('login') }}">{{ __('layout.guest.login') }}</a>
                             @if (Route::has('register'))
-                                <a class="item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="item" href="{{ route('register') }}">{{ __('layout.guest.register') }}</a>
                             @endif
                         @else
                             <div href="#" class="ui dropdown item">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="ui container">
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
-        <h2 class="ui center aligned header">{{ __('Register') }}</h2>
+        <h2 class="ui center aligned header">{{ __('auth.register') }}</h2>
 
         <div class="ui message">
             <p>@lang('auth.policy._', ['link' => '<a href="/privacy?register=1">' . __('auth.policy.link') . '</a>'])</p>

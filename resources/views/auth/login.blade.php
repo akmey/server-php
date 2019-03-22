@@ -3,7 +3,7 @@
 @section('content')
 <div class="ui container">
     <div class="ui segment" v-bind:class="{ inverted: dark  }">
-        <h2 class="ui center aligned header">{{ __('Login') }}</h2>
+        <h2 class="ui center aligned header">{{ __('auth.login') }}</h2>
 
         <form method="POST" action="{{ route('login') }}" class="ui form{{ !empty($errors->all()) ? ' error' : '' }}">
             @csrf

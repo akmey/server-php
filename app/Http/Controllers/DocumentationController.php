@@ -10,6 +10,10 @@ class DocumentationController extends Controller
         return view('doc');
     }
 
+    public function welcome() {
+        return view('welcome');
+    }
+
     public function privacy(Request $request) {
         if ($request->input('register')) {
             return view('privacy', ['register' => true]);
