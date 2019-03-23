@@ -8,7 +8,7 @@ return [
 
     'newkey' => [
         '_' => 'Nouvelle clé',
-        'tooltip' => 'La majorité des clés sont acceptés',
+        'tooltip' => 'La majorité des clés sont acceptées',
         'aria' => 'Nouvelle clé (copiez-la sans son nom)',
         'err' => [
             'empty' => 'La clé est vide',

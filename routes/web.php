@@ -35,6 +35,8 @@ Route::get('/doc', 'DocumentationController@index')->name('documentation');
 
 Route::get('/privacy', 'DocumentationController@privacy')->name('privacy');
 
+Route::get('/legal', 'DocumentationController@legal')->name('legal');
+
 Route::get('/edit/{keyid}', 'DashboardController@edit')->name('edit');
 
 Route::post('/edit/{keyid}', 'DashboardController@editPost')->name('editpost');

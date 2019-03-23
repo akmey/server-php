@@ -5,7 +5,7 @@ return [
     'slogan' => 'Oubliez vos clés, retenez votre nom (facile !).',
     'user' => [
         'title' => 'Utilisateur',
-        'slogan' => 'Ajoutez toutes vos clés à Akmey et sauvegardez-les à un seul endroid'
+        'slogan' => 'Ajoutez toutes vos clés à Akmey et sauvegardez-les à un seul endroit'
     ],
     'tools' => [
         'title' => 'Outils',

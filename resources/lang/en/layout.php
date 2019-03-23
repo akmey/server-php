@@ -2,6 +2,11 @@
 
 return [
 
+    'menu' => [
+        'privacy' => 'Privacy',
+        'legal' => 'Legal'
+    ],
+
     'guest' => [
         'login' => 'Login',
         'register' => 'Register'

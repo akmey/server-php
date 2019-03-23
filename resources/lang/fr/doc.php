@@ -45,6 +45,16 @@ return [
         'btn' => 'J\'accepte les conditions, continuer'
     ],
 
+    'legal' => [
+        'title' => 'Mentions légales',
+        'agpl' => [
+            '_' => ':app est un logiciel libre utilisant la licence AGPLv3. Le projet est disponible sur :link.',
+            'link' => 'GitHub'
+        ],
+        'host' => 'Ce serveur est hébergé par :name, via :host, :details.',
+        'more' => 'Informations supplémentaires fournies par l\'hébergeur :',
+    ],
+
     'readme' => [
         'akmey' => [
             'title' => 'C\'est quoi Akmey ?',

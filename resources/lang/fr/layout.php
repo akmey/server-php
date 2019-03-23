@@ -2,6 +2,11 @@
 
 return [
 
+    'menu' => [
+        'privacy' => 'Confidentialité',
+        'legal' => 'Mentions légales'
+    ],
+
     'guest' => [
         'login' => 'Se connecter',
         'register' => 'S\'inscrire'
@@ -16,7 +21,7 @@ return [
 
     'js' => [
         '_' => 'Akmey fonctionne avec JS.',
-        'tooltip' => 'Nous comprenons que JavaScript peut vous poser problème, mais certaines parties d\'Akmey nécessite JS pour fonctionne. Cependant, certains composants fonctionnent sans JavaScript.'
+        'tooltip' => 'Nous comprenons que JavaScript peut vous poser problème, mais certaines parties d\'Akmey nécessite JS pour fonctionner. Cependant, certains composants fonctionnent sans JavaScript.'
     ],
 
     'back' => 'Revenir en arrière.',

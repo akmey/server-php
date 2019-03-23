@@ -24,6 +24,14 @@
                 <a class="header item" href="{{ url('/') }}">
                     {{ config('app.name', 'Akmey') }}
                 </a>
+                <div href="#" class="ui dropdown item">
+                    <i class="info icon"></i><i class="dropdown icon"></i>
+
+                    <div class="menu">
+                        <a href="/privacy" class="item">{{ __('layout.menu.privacy') }}</a>
+                        <a href="/legal" class="item">{{ __('layout.menu.legal') }}</a>
+                    </div>
+                </div>
 
                 <div class="right menu" id="navbarSupportedContent">
                     <div href="#" class="ui dropdown item">

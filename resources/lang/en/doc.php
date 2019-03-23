@@ -45,6 +45,16 @@ return [
         'btn' => 'I accept the terms, register'
     ],
 
+    'legal' => [
+        'title' => 'Legal',
+        'agpl' => [
+            '_' => ':app is free software under AGPLv3 license. The project is available on :link.',
+            'link' => 'GitHub'
+        ],
+        'host' => 'This server is hosted by :name, via :host, :details.',
+        'more' => 'Additional information from the host :',
+    ],
+
     'readme' => [
         'akmey' => [
             'title' => 'What\'s Akmey?',
