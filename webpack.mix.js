@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const fs = require('fs');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +12,13 @@ const mix = require('laravel-mix');
  |
  */
 
+if (!fs.existsSync('resources/semantic/dist/semantic.css') || !fs.existsSync('resources/semantic/dist/semantic.min.js')) {
+    console.error('Semantic UI is not built, run `npx gulp build` in resources/semantic folder');
+    process.exit(1);
+}
+
 mix.browserSync('localhost:8000');
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+    .extract(['vue', 'jquery', 'axios', 'lang.js', 'noty', 'clipboard', 'sweetalert', 'cookie-universal'])
+    .sass('resources/sass/app.scss', 'public/css');
