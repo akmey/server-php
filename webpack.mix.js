@@ -21,4 +21,5 @@ mix.browserSync('localhost:8000');
 
 mix.js('resources/js/app.js', 'public/js')
     .extract(['vue', 'jquery', 'axios', 'lang.js', 'noty', 'clipboard', 'sweetalert', 'cookie-universal'])
+    .version()
     .sass('resources/sass/app.scss', 'public/css');
