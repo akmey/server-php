@@ -11,7 +11,7 @@ try {
     // window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
-    require('semantic-ui-css');
+    require('../semantic/dist/semantic.min');
 } catch (e) {}
 
 /**

@@ -59,6 +59,16 @@ Vue.component(
     require('./components/DarkButton').default
 );
 
+Vue.component(
+    'key',
+    require('./components/Key').default
+);
+
+Vue.component(
+    'copykeys',
+    require('./components/CopyKeys').default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

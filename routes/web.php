@@ -50,3 +50,7 @@ Route::get('/github/callback', 'GitHubController@handleProviderCallback')->name(
 Route::post('/github/import', 'GitHubController@importGitHubKeys')->name('githubpost');
 
 Route::get('/locale.json', 'LocaleController@getJSON')->name('localejson');
+
+Route::get('/language/{lang}', 'LocaleController@setLocale')->name('setlocale');
+
+Route::get('/{username}.sh', 'ScriptController@getUserScript')->name('userscript');

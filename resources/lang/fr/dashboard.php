@@ -4,7 +4,7 @@ return [
 
     'title' => 'Tableau de bord',
     'logged' => 'Vous êtes connecté !',
-    'sshnotice' => 'Connectez-vous à gui@:ssh avec votre client SSH favori pour ajouter vos clés ou collez-là en dessous (sans son commentaire).',
+    'sshnotice' => 'Connectez-vous à gui@:ssh avec votre client SSH favori pour ajouter vos clés ou collez-la en dessous (sans son commentaire).',
 
     'newkey' => [
         '_' => 'Nouvelle clé',

@@ -83,8 +83,8 @@ return [
     'locale' => 'en',
 
     'locales' => [
-        'en',
-        'fr'
+        'en' => 'English',
+        'fr' => 'Français'
     ],
 
     /*

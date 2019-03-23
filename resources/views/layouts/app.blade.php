@@ -28,47 +28,48 @@
                 </a>
 
                 <div class="right menu" id="navbarSupportedContent">
-                    {{--<!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <div href="#" class="ui dropdown item">
+                        <i class="language icon"></i><i class="dropdown icon"></i>
 
-                    </ul>
+                        <div class="menu">
+                            @foreach (config('app.locales') as $lang => $language)
+                                <a href="/language/{{ $lang }}" class="item">{{ $language }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <dark-button v-on:change-theme="switchTheme"></dark-button>
+                    <!-- Authentication Links -->
+                    @guest
+                        <a class="item" href="{{ route('login') }}">{{ __('layout.guest.login') }}</a>
+                        @if (Route::has('register'))
+                            <a class="item" href="{{ route('register') }}">{{ __('layout.guest.register') }}</a>
+                        @endif
+                    @else
+                        <div href="#" class="ui dropdown item">
+                            <img class="ui avatar circular image" src="/storage/{{ Auth::user()->profilepic }}"><span>{{ Auth::user()->name }}</span> <i class="dropdown icon"></i>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">--}}
-                        <dark-button v-on:change-theme="switchTheme"></dark-button>
-                        <!-- Authentication Links -->
-                        @guest
-                            <a class="item" href="{{ route('login') }}">{{ __('layout.guest.login') }}</a>
-                            @if (Route::has('register'))
-                                <a class="item" href="{{ route('register') }}">{{ __('layout.guest.register') }}</a>
-                            @endif
-                        @else
-                            <div href="#" class="ui dropdown item">
-                                <img class="ui avatar circular image" src="/storage/{{ Auth::user()->profilepic }}"><span>{{ Auth::user()->name }}</span> <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="{{ url('/u/'.Auth::user()->name) }}">
+                                    <i class="user icon"></i> {{ __('layout.user.profile') }}
+                                </a>
+                                <a class="item" href="{{ route('dashboard') }}">
+                                    <i class="dashboard icon"></i> {{ __('layout.user.dashboard') }}
+                                </a>
+                                <a class="item" href="{{ route('dashboardapps') }}">
+                                    <i class="code icon"></i> {{ __('layout.user.oauth') }}
+                                </a>
+                                <a class="item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                    <i class="logout icon"></i> {{ __('layout.user.logout') }}
+                                </a>
 
-                                <div class="menu">
-                                    <a class="item" href="{{ url('/u/'.Auth::user()->name) }}">
-                                        <i class="user icon"></i> {{ __('layout.user.profile') }}
-                                    </a>
-                                    <a class="item" href="{{ route('dashboard') }}">
-                                        <i class="dashboard icon"></i> {{ __('layout.user.dashboard') }}
-                                    </a>
-                                    <a class="item" href="{{ route('dashboardapps') }}">
-                                        <i class="code icon"></i> {{ __('layout.user.oauth') }}
-                                    </a>
-                                    <a class="item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="logout icon"></i> {{ __('layout.user.logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
-                        @endguest
-                    {{-- </ul> --}}
+                        </div>
+                    @endguest
                 </div>
             </div>
         </nav>

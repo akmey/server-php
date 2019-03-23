@@ -1,5 +1,5 @@
 @component('mail::message')
-# {{ __('notification.added.title', ['name' => $key->user->name]) }}
+# {{ __('notification.added.title', ['user' => $key->user->name]) }}
 
 {{ __('notification.added.text1') }}
 

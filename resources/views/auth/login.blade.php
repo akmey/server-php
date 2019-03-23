@@ -35,14 +35,14 @@
                     <input class="hidden" tabindex="0" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked=""' : '' }}>
 
                     <label for="remember">
-                        {{ __('Remember Me') }}
+                        {{ __('auth.rememberme') }}
                     </label>
                 </div>
             </div>
 
             @if (!empty($errors->all()))
                 <div class="ui error message">
-                    <div class="header">Please check these errors and retry :</div>
+                    <div class="header">{{ __('auth.error') }}</div>
                     <div class="content">
                         <ul>
                             @foreach ($errors->all() as $message)

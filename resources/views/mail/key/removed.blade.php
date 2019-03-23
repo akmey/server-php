@@ -1,5 +1,5 @@
 @component('mail::message')
-# {{ __('notification.removed.title', ['name' => $key->user->name]) }}
+# {{ __('notification.removed.title', ['user' => $key->user->name]) }}
 
 {{ __('notification.removed.text1') }}
 
