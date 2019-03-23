@@ -8,7 +8,13 @@ return [
 
     'newkey' => [
         '_' => 'Nouvelle clé',
-        'tooltip' => 'La majorité des clés sont acceptés'
+        'tooltip' => 'La majorité des clés sont acceptés',
+        'aria' => 'Nouvelle clé (copiez-la sans son nom)',
+        'err' => [
+            'empty' => 'La clé est vide',
+            'malformed' => 'La clé est invalide',
+            'neterr' => 'Server refused our key. (Clé déjà utilisée, erreur réseau)'
+        ]
     ],
 
     'table' => [

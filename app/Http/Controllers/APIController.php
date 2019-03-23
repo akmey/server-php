@@ -84,7 +84,7 @@ class APIController extends Controller
 
     public function getUser(Request $request, $userid = 'self') {
         if ($userid == 'self') {
-            $user = Auth::User();
+            $user = Auth::user();
         } else {
             $user = User::find($userid);
         }
@@ -105,7 +105,7 @@ class APIController extends Controller
 
     public function getUserByQuery(Request $request, $query = 'self') {
         if ($query == 'self') {
-            $user = Auth::User();
+            $user = Auth::user();
         } else {
             $user = User::where('email', $query)->orWhere('name', $query)->first();
         }

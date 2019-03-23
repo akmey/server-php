@@ -8,7 +8,13 @@ return [
 
     'newkey' => [
         '_' => 'New key',
-        'tooltip' => 'We accept major key types'
+        'tooltip' => 'We accept major key types',
+        'aria' => 'New key (paste it without comments)',
+        'err' => [
+            'empty' => 'Key is empty',
+            'malformed' => 'Key is malformed',
+            'neterr' => 'Server refused our key. (Key already used, network error)'
+        ]
     ],
 
     'table' => [
