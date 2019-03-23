@@ -10,6 +10,7 @@ Akmey is a keyserver, but not for GPG keys, for SSH ones! It is bundled with too
 - Create the `.env` based on `.env.example`
 - Fetch the deps using `composer install -o --no-dev`
 - Fetch the webclient deps using `npm install`
+- Build Semantic UI : `cd resources/semantic; gulp build`
 - Build the webclient using `npm run production`
 - Make sure permissions are good
 - `php artisan migrate` : create the scehmas
