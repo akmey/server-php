@@ -31,6 +31,8 @@ class AuthServiceProvider extends ServiceProvider
 
         // Passport::withoutCookieSerialization();
 
+        Gate::resource('keys', 'App\Policies\KeyPolicy');
+
         Passport::enableImplicitGrant();
 
         Passport::tokensCan([

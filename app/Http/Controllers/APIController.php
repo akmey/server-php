@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\User;
 use App\Key;
 
@@ -14,8 +15,7 @@ class APIController extends Controller
         if (empty($request->input('key'))) {
             return response()->json(['error' => 'missing_key', 'message' => 'missing key'], 400);
         } else {
-            // if (Auth::user()->can('create', Key::class)) { // FIXME: this will always return false
-            if (Auth::user()->can('create', Key::first())) {  // This seems to work better
+            if (Gate::allows('keys.create')) {
                 $request->validate([
                     'key' => 'string|unique:keys|regex:/^ssh-(?:[0-9a-z]){2,} [\S]{12,}$/'
                 ]);
