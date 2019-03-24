@@ -17,7 +17,7 @@ class APIController extends Controller
             // if (Auth::user()->can('create', Key::class)) { // FIXME: this will always return false
             if (Auth::user()->can('create', Key::first())) {  // This seems to work better
                 $request->validate([
-                    'key' => 'string|unique:keys'
+                    'key' => 'string|unique:keys|regex:/^ssh-(?:[0-9a-z]){2,} [\S]{12,}$/'
                 ]);
                 $key = new Key;
                 $key->key = $request->input('key');
