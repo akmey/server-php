@@ -19,6 +19,7 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "php-http/guzzle6-adapter": "^1.1",
+        "sentry/sentry-laravel": "^1.0",
         "symfony/polyfill-iconv": "^1.10"
     },
     "require-dev": {
