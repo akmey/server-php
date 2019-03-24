@@ -20,6 +20,12 @@ if (!fs.existsSync('resources/semantic/dist/semantic.css') || !fs.existsSync('re
 mix.browserSync('localhost:8000');
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/js/err.js', 'public/js')
     .extract(['vue', 'jquery', 'axios', 'lang.js', 'noty', 'clipboard', 'sweetalert', 'cookie-universal'])
-    .version()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/err.scss', 'public/css')
+    .sourceMaps();
+
+if (mix.inProduction()) {
+    mix.version();
+}
