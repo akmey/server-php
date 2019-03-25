@@ -32,6 +32,6 @@ return [
         'brb' => 'Nous revenons bientôt'
     ],
 
-    'home' => 'Go home'
+    'home' => 'Accueil'
 
 ];

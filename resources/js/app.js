@@ -14,7 +14,7 @@ window.Vue = require('vue');
 
 import * as Sentry from '@sentry/browser';
 
-if (process.env.MIX_SENTRY_DSN) {
+if (process.env.MIX_SENTRY_DSN != 'null') {
     Sentry.init({
         dsn: process.env.MIX_SENTRY_DSN,
         integrations: [new Sentry.Integrations.Vue({

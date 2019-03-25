@@ -15,7 +15,7 @@ class GitHubController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function redirectToProvider() {
-        return Socialite::driver('github')->scopes(['read:public_key'])->redirect();
+        return Socialite::driver('github')->setScopes(['read:public_key'])->redirect();
     }
 
     /**
@@ -33,17 +33,18 @@ class GitHubController extends Controller {
 
         $keys = $connection->me()->keys()->all();
 
-        $request->session()->flash('gh-keys', $keys);
+        $request->session()->push('gh-keys', $keys);
 
         return view('github.import', ['keys' => $keys]);
     }
 
     public function importGitHubKeys(Request $request) {
-        if (empty($request->session()->get('gh-keys'))) {
+        $gh = $request->session()->pull('gh-keys')[0];
+        if (empty($gh)) {
             return abort(419);
         }
         $keys = array();
-        foreach ($request->session()->get('gh-keys') as $key) {
+        foreach ($gh as $key) {
             foreach ($request->input() as $index => $value) {
                 if ($index == $key['id']) {
                     $keys[] = $key;

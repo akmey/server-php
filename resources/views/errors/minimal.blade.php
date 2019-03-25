@@ -19,6 +19,10 @@
             </div>
 
             @yield('additional')
+
+            <div class="home">
+                <a href="{{ url('/') }}">{{ __('errors.home') }}</a>
+            </div>
         </div>
     </body>
 </html>
