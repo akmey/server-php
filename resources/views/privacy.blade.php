@@ -63,6 +63,13 @@
                                 <div class="description">{{ __('doc.privacy.logs.rot.desc') }}</div>
                             </div>
                         </div>
+                        <div class="item">
+                            <i class="exclamation circle icon"></i>
+                            <div class="content">
+                                <div class="header">{{ __('doc.privacy.logs.err._') }}</div>
+                                <div class="description">@if(env('MIX_SENTRY_DSN')){{ __('doc.privacy.logs.err.sentry') }}@else{{ __('doc.privacy.logs.err.local') }}@endif</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

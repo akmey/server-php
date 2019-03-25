@@ -35,9 +35,14 @@ return [
             'rot' => [
                 '_' => 'Rotation des journaux',
                 'desc' => 'Ces journaux sont stockés pour un maximum d\'1 an.'
+            ],
+            'err' => [
+                '_' => 'Erreurs',
+                'sentry' => 'Les journaux d\'erreurs sont transmis à un serveur Sentry pour analyse.',
+                'local' => 'Les journaux d\'erreurs sont sauvegardés localement.'
             ]
         ],
-        'end' => 'C\'est tout ! Nous ne collectons aucune autre donnée, aucune donnée n\'est transmise ou vendue. Tout reste ici.',
+        'end' => 'C\'est tout ! Nous ne collectons aucune autre donnée, aucune donnée n\'est passée dans des analytiques ou vendues à des publicitaires.',
         'warning' => [
             '_' => 'Utilisez un serveur Akmey de confiance !',
             'content' => 'Nous ne pouvons garantir que le serveur auquel vous vous inscrivez est sécurisé et de confiance. Vérifiez l\'intégrité de l\'hébergeur. Les développeurs d\'Akmey ne peuvent être tenus responsables en cas de violation.'

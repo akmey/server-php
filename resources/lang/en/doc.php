@@ -35,9 +35,14 @@ return [
             'rot' => [
                 '_' => 'Log rotation',
                 'desc' => 'The logs are kept for a maximum of 1 year.'
+            ],
+            'err' => [
+                '_' => 'Error logs',
+                'sentry' => 'Errors logs are transmitted to a Sentry server for analysis.',
+                'local' => 'Errors logs are saved on local files.'
             ]
         ],
-        'end' => 'That\'s it ! We don\'t collect anything else, we don\'t process your data in analytics, we don\'t sell it to advertisers, none of that. It stays on our server.',
+        'end' => 'That\'s it ! We don\'t collect anything else, we don\'t process your data in analytics, we don\'t sell it to advertisers, none of that.',
         'warning' => [
             '_' => 'Use only an Akmey server you trust!',
             'content' => 'We cannot guarantee that the server on which you register is secure and respects your data. Check the integrity of the host before registering. Akmey developers cannot be held responsible if data is found to violate this privacy or security policy.'
