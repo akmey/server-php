@@ -169,7 +169,8 @@ return [
     'github' => [
         'title' => 'Parfait !',
         'head' => 'Choississez vos clés à importer.',
-        'btn' => 'Importer !'
+        'btn' => 'Importer !',
+        'err' => 'La clé ":name" n\'a pas pu être importée : cette clé est déjà utilisée.'
     ]
 
 ];

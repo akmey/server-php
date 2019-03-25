@@ -6,6 +6,7 @@ use Auth;
 use GitHub;
 use App\Key;
 use Socialite;
+use Validator;
 use Illuminate\Http\Request;
 
 class GitHubController extends Controller {
@@ -44,6 +45,7 @@ class GitHubController extends Controller {
             return abort(419);
         }
         $keys = array();
+        $return = array();
         foreach ($gh as $key) {
             foreach ($request->input() as $index => $value) {
                 if ($index == $key['id']) {
@@ -52,12 +54,17 @@ class GitHubController extends Controller {
             }
         }
         foreach ($keys as $obj) {
-            $key = new Key;
-            $key->comment = $obj['title'];
-            $key->key = $obj['key'];
-            $key->user()->associate(Auth::user());
-            $key->save();
+            $valid = Validator::make($obj, ['key' => 'string|unique:keys|regex:/^ssh-(?:[0-9a-z]){2,} [\S]{12,}$/']);
+            if ($valid->fails()) {
+                $return[] = __('dashboard.github.err', ['name' => $obj['title']]);
+            } else {
+                $key = new Key;
+                $key->comment = $obj['title'];
+                $key->key = $obj['key'];
+                $key->user()->associate(Auth::user());
+                $key->save();
+            }
         }
-        return redirect('dashboard');
+        return redirect('dashboard')->with('status', $return);
     }
 }

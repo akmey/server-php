@@ -169,7 +169,8 @@ return [
     'github' => [
         'title' => 'Great!',
         'head' => 'Now choose the keys you want to import.',
-        'btn' => 'Import!'
+        'btn' => 'Import!',
+        'err' => '":name" key could not be imported : this key is already used.'
     ]
 
 ];

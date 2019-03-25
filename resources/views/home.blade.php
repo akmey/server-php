@@ -6,8 +6,16 @@
         <h2 class="ui center aligned header">{{ __('dashboard.title') }}</h2>
 
         @if (session('status'))
-            <div class="ui success message" role="alert">
+            <div class="ui info message" role="alert">
+                @if(is_array(session('status')))
+                <ul>
+                    @foreach (session('status') as $item)
+                    <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+                @else
                 {{ session('status') }}
+                @endif
             </div>
         @endif
 
