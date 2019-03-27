@@ -3,11 +3,16 @@
 return [
 
     'overview' => 'Overview',
+    'teamoverview' => 'Team',
     'you' => '(Hey, that\'s you!)',
     'registered' => 'Registered since :date.',
     'edit' => 'Edit',
     'bio' => 'Bio',
     'keys' => 'Keys',
+    'kick' => 'Kick',
+    'users' => 'Users',
+    'created' => 'Created by :user',
+    'createdon' => 'Created on :date.',
     'copied' => 'Key copied in clipboard!',
     'copiedplural' => 'Keys copied in clipboard!',
     'install' => 'Install user',

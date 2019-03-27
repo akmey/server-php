@@ -31,6 +31,7 @@ return [
         'export' => 'Export my account',
         'or' => 'or',
         'import' => 'Import my account',
+        'importerr' => 'Cannot import key :name : :err',
         'delete' => [
             '_' => 'Delete my account',
             'tooltip' => 'This will delete all your account data from this server',
@@ -171,6 +172,24 @@ return [
         'head' => 'Now choose the keys you want to import.',
         'btn' => 'Import!',
         'err' => '":name" key could not be imported : this key is already used.'
+    ],
+
+    'team' => [
+        'create' => 'Create New Team',
+        'invitations' => 'Pending invitations',
+        'empty' => 'You don\'t have pending invitations.',
+        'invitation' => [
+            'accept' => 'Accept',
+            'ignore' => 'Ignore'
+        ],
+        'welcome' => 'Welcome to :team!'
+    ],
+
+    'menu' => [
+        'keys' => 'Keys',
+        'teams' => 'Teams',
+        'oauth' => 'OAuth Apps',
+        'settings' => 'Settings'
     ]
 
 ];

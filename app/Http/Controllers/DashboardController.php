@@ -26,9 +26,12 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
+    public function newDash() {
+        return view('rocketdashboard', ['tab' => 'keys']);
+    }
+
+    public function dashSection($section) {
+        return view('rocketdashboard', ['tab' => $section]);
     }
 
     public function edit(Request $request, $keyid) {
@@ -74,10 +77,6 @@ class DashboardController extends Controller
         return view('oauthapps');
     }
 
-    public function editProfile() {
-        return view('edit-profile', ['status' => null, 'error' => null]);
-    }
-
     public function editProfilePost(EditProfile $request) {
         $user = Auth::user();
         if (Hash::check($request->input('oldpasswd'), $user->password)) {
@@ -101,9 +100,11 @@ class DashboardController extends Controller
                 $user->profilepic = $tochange['profilepic']->store('profilepics', 'public');
             }
             $user->save();
-            return view('edit-profile', ['status' => __('layout.saved'), 'error' => null]);
+            // return view('edit-profile', ['status' => __('layout.saved'), 'error' => null]);
+            return redirect()->back();
         } else {
-            return view('edit-profile', ['status' => null, 'error' => __('auth.oldpasswd')]);
+            // return view('edit-profile', ['status' => null, 'error' => __('auth.oldpasswd')]);
+            return redirect()->back()->withErrors([__('auth.oldpasswd')]);
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Team;
 use Markdown;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,15 @@ class PublicController extends Controller
             return abort(404);
         } else {
             return view('profile', ['user' => $user, 'bio' => Markdown::convertToHtml($user->bio)]);
+        }
+    }
+
+    public function showTeam($teamname) {
+        $team = Team::where('name', $teamname)->first();
+        if (empty($team)) {
+            return abort(404);
+        } else {
+            return view('profile.team', ['team' => $team, 'bio' => Markdown::convertToHtml($team->bio)]);
         }
     }
 }

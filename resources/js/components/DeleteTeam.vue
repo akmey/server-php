@@ -1,29 +1,29 @@
 <template>
-    <a @click.prevent="deleteAccountSubmit" href="#" class="ui orange button">{{ lang.get('dashboard.settings.delete._') }}</a>
+    <a @click.prevent="deleteSubmit" href="#" class="ui orange button">{{ lang.get('team.form.delete.btn') }}</a>
 </template>
 
 <script>
     import swal from 'sweetalert';
 
     export default {
-        props: ['lang'],
+        props: ['teamid', 'lang'],
         methods: {
-            deleteAccountSubmit() {
+            deleteSubmit() {
                 swal({
-                    title: this.lang.get('dashboard.settings.delete.one.title'),
-                    text: this.lang.get('dashboard.settings.delete.one.text'),
+                    title: this.lang.get('team.form.delete.one.title'),
+                    text: this.lang.get('team.form.delete.one.desc'),
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
                 })
                 .then((willDelete) => {
                     if (willDelete) {
-                        fetch('/delete-account').then(res => {
+                        fetch('/team/delete/' + this.teamid).then(res => {
                             if (!res.ok) return false;
-                            swal(this.lang.get('dashboard.settings.delete.two'), {
+                            swal(this.lang.get('team.form.delete.two'), {
                                 icon: "success",
                             }).then(val => {
-                                window.location.assign('/');
+                                window.location.assign('/dashboard');
                             });
                         });
                         return;

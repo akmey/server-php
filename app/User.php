@@ -32,4 +32,19 @@ class User extends Authenticatable implements MustVerifyEmail
     public function keys() {
         return $this->hasMany('App\Key');
     }
+
+    public function teams()
+    {
+        return $this->belongsToMany('App\Team');
+    }
+
+    public function teamsCreator()
+    {
+        return $this->hasMany('App\Team', 'creator_id');
+    }
+
+    public function invitations()
+    {
+        return $this->hasMany('App\TeamInvitation');
+    }
 }

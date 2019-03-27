@@ -3,11 +3,16 @@
 return [
 
     'overview' => 'Vue d\'ensemble',
+    'teamoverview' => 'Équipe',
     'you' => '(Hey, c\'est vous !)',
     'registered' => 'Inscrit depuis le :date.',
     'edit' => 'Éditer',
     'bio' => 'Bio',
     'keys' => 'Clés',
+    'kick' => 'Exclure',
+    'users' => 'Utilisateurs',
+    'created' => 'Créée par :user',
+    'createdon' => 'Créée le :date.',
     'copied' => 'Clé copiée dans le presse-papier !',
     'copiedplural' => 'Clés copiées dans le presse-papier !',
     'install' => 'Installer l\'utilisateur',

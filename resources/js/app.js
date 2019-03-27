@@ -48,9 +48,20 @@ Vue.component(
 );
 
 Vue.component(
+    'delete-team',
+    require('./components/DeleteTeam.vue').default
+);
+
+Vue.component(
     'new-key',
     require('./components/NewKey.vue').default
 );
+
+Vue.component(
+    'new-member',
+    require('./components/NewMember.vue').default
+);
+
 
 Vue.component(
     'passport-clients',
@@ -82,6 +93,11 @@ Vue.component(
     require('./components/CopyKeys').default
 );
 
+Vue.component(
+    'dashboard-menu',
+    require('./components/DashboardMenu').default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -93,6 +109,7 @@ const app = new Vue({ // eslint-disable-line no-unused-vars
     data: {
         dark: false,
         messages: {},
+        activeTab: 'keys',
         lang: null
     },
     methods: {
@@ -104,6 +121,10 @@ const app = new Vue({ // eslint-disable-line no-unused-vars
                 this.dark = false;
                 $('body').removeClass('darkbg');
             }
+        },
+        setTab: function(tab) {
+            this.activeTab = tab;
+            history.pushState({tab}, process.env.MIX_APP_NAME, '/dashboard/'+tab);
         }
     },
     beforeCreate: function() {
@@ -119,6 +140,10 @@ const app = new Vue({ // eslint-disable-line no-unused-vars
             throw new Error(err);
         });
         return true;
+    },
+    beforeMount: function() {
+        var tab = $('meta[name=activeTab]').attr('content');
+        if (tab) this.activeTab = tab;
     }
 });
 

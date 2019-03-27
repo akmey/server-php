@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use App\User;
+use App\Team;
 use App\Key;
 
 class APIController extends Controller
@@ -103,12 +104,8 @@ class APIController extends Controller
         }
     }
 
-    public function getUserByQuery(Request $request, $query = 'self') {
-        if ($query == 'self') {
-            $user = Auth::user();
-        } else {
-            $user = User::where('email', $query)->orWhere('name', $query)->first();
-        }
+    public function getUserByQuery(Request $request, $query) {
+        $user = User::where('email', $query)->orWhere('name', $query)->first();
         if (empty($user)) {
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {
@@ -121,6 +118,32 @@ class APIController extends Controller
                 $user->load('keys');
             }
             return response()->json($user, 200);
+        }
+    }
+
+    public function getTeam(Request $request, $teamid) {
+        $team = Team::find($teamid);
+        if (empty($team)) {
+            return response()->json(['error' => 'not_found', 'message' => 'This team does not exist.'], 404);
+        } else {
+            $team->load('users');
+            foreach ($team->users as $user) {
+                $user->load('keys');
+            }
+            return response()->json($team, 200);
+        }
+    }
+
+    public function getTeamByQuery(Request $request, $query) {
+        $team = Team::where('name', $query)->first();
+        if (empty($team)) {
+            return response()->json(['error' => 'not_found', 'message' => 'This team does not exist.'], 404);
+        } else {
+            $team->load('users');
+            foreach ($team->users as $user) {
+                $user->load('keys');
+            }
+            return response()->json($team, 200);
         }
     }
 }

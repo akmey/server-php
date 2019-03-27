@@ -26,3 +26,7 @@ Route::middleware(['auth:api', 'scopes:keys'])->put('/keys/{keyid}', 'APIControl
 Route::middleware(['auth:api', 'scopes:keys'])->delete('/keys/{keyid}', 'APIController@deleteKey')->name('keydelete');
 
 Route::post('/keys/fetch', 'APIController@fetchKey')->name('keyfetch');
+
+Route::get('/team/{teamid}', 'APIController@getTeam')->name('teamget');
+
+Route::get('/team/match/{query}', 'APIController@getTeamByQuery')->name('teamquery');

@@ -31,6 +31,7 @@ return [
         'export' => 'Exporter mon compte',
         'or' => 'ou',
         'import' => 'Importer mon compte',
+        'importerr' => 'Impossible d\'importer la clé :name : :err',
         'delete' => [
             '_' => 'Supprimer mon compte',
             'tooltip' => 'Ceci va supprimer toutes vos données du serveur',
@@ -171,6 +172,24 @@ return [
         'head' => 'Choississez vos clés à importer.',
         'btn' => 'Importer !',
         'err' => 'La clé ":name" n\'a pas pu être importée : cette clé est déjà utilisée.'
+    ],
+
+    'team' => [
+        'create' => 'Créer une équipe',
+        'invitations' => 'Invitations en attente',
+        'empty' => 'Vous n\'avez pas d\'invitations en attente.',
+        'invitation' => [
+            'accept' => 'Accepter',
+            'ignore' => 'Ignorer'
+        ],
+        'welcome' => 'Bienvenue à :team !'
+    ],
+
+    'menu' => [
+        'keys' => 'Clés',
+        'teams' => 'Équipes',
+        'oauth' => 'Applications OAuth',
+        'settings' => 'Paramètres'
     ]
 
 ];

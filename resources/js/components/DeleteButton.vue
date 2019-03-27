@@ -1,5 +1,5 @@
 <template>
-    <a @click.prevent="deleteSubmit" href="#" class="ui red button">{{ lang.get('dashboard.edit.delete') }}</a>
+    <a @click.prevent="deleteSubmit" href="#" class="ui orange button">{{ lang.get('dashboard.edit.delete') }}</a>
 </template>
 
 <script>
