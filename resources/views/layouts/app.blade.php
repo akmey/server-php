@@ -61,7 +61,7 @@
                                 <a class="item" href="{{ route('dashboard') }}">
                                     <i class="dashboard icon"></i> {{ __('layout.user.dashboard') }}
                                 </a>
-                                <a class="item" href="{{ route('dashboardsection', ['section' => 'oauth']) }}">
+                                <a class="item" href="{{ route('dashboard.section', ['section' => 'oauth']) }}">
                                     <i class="code icon"></i> {{ __('layout.user.oauth') }}
                                 </a>
                                 <a class="item" href="{{ route('logout') }}"

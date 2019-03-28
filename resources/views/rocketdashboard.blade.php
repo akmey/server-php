@@ -74,7 +74,7 @@
                         <div class="ui list">
                             <div class="list item">
                                 <div class="content">
-                                    <a class="header" href="{{ route('team', ['team' => $team->name]) }}"><i class="users icon"></i> {{ $team->name }}</a>
+                                    <a class="header" href="{{ route('profile.team', ['team' => $team->name]) }}"><i class="users icon"></i> {{ $team->name }}</a>
                                     <div class="description">{{ __('profile.createdon', ['date' => date('d/m/Y', strtotime($team->created_at))]) }}</div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                         @endforeach
                     </div>
                     <div class="right aligned column">
-                        <a href="{{ route('teamcreate') }}" class="ui blue icon labeled button"><i class="plus icon"></i> {{ __('dashboard.team.create') }}</a>
+                        <a href="{{ route('team.create') }}" class="ui blue icon labeled button"><i class="plus icon"></i> {{ __('dashboard.team.create') }}</a>
                         <h3 class="ui header">
                             {{ __('dashboard.team.invitations') }}
                         </h3>
@@ -93,10 +93,10 @@
                             @foreach (Auth::user()->invitations as $invitation)
                             <div class="list item">
                                 <div class="content">
-                                    <a class="header" href="{{ route('team', ['team' => $invitation->team->name]) }}"><i class="users icon"></i> {{ $invitation->team->name }}</a>
+                                    <a class="header" href="{{ route('profile.team', ['team' => $invitation->team->name]) }}"><i class="users icon"></i> {{ $invitation->team->name }}</a>
                                     <div class="description">{{ __('profile.createdon', ['date' => date('d/m/Y', strtotime($invitation->team->created_at))]) }}</div>
-                                    <a href="{{ route('teaminvitationaccept', ['invitationid' => $invitation->id]) }}" class="ui blue button">{{ __('dashboard.team.invitation.accept') }}</a>
-                                    <a href="{{ route('teaminvitationignore', ['invitationid' => $invitation->id]) }}" class="ui button">{{ __('dashboard.team.invitation.ignore') }}</a>
+                                    <a href="{{ route('team.invitation.accept', ['invitationid' => $invitation->id]) }}" class="ui blue button">{{ __('dashboard.team.invitation.accept') }}</a>
+                                    <a href="{{ route('team.invitation.ignore', ['invitationid' => $invitation->id]) }}" class="ui button">{{ __('dashboard.team.invitation.ignore') }}</a>
                                 </div>
                             </div>
                             @endforeach

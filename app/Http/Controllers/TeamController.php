@@ -34,7 +34,7 @@ class TeamController extends Controller
 
         $team->users()->attach(Auth::id());
 
-        return redirect()->route('team', ['name' => $team->name]);
+        return redirect()->route('profile.team', ['name' => $team->name]);
     }
 
     /**
@@ -148,7 +148,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($teamid);
         if (Auth::user()->can('delete', $team)) {
             $team->delete();
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.section', ['section' => 'teams']);
         } else {
             return abort(401);
         }

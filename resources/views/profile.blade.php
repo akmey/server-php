@@ -13,7 +13,7 @@
                         <div class="sub header">{{ __('profile.registered', ['date' => date('d/m/Y', strtotime($user->created_at))]) }}</div>
                     </div>
                 </h2>
-                @if ($user->id == Auth::id()) <a href="{{ route('dashboardsection', ['section' => 'settings']) }}" class="ui primary labeled icon button"><i class="edit icon"></i> {{ __('profile.edit') }}</a> @endif
+                @if ($user->id == Auth::id()) <a href="{{ route('dashboard.section', ['section' => 'settings']) }}" class="ui primary labeled icon button"><i class="edit icon"></i> {{ __('profile.edit') }}</a> @endif
                 <br><br>
                 <a class="ui teal left ribbon label">{{ __('profile.bio') }}</a>
                 <br><br>
