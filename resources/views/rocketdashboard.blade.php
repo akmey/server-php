@@ -158,7 +158,7 @@
                     <div class="center aligned column">
                         <div class="field">
                             <label for="bio">{{ __('dashboard.profile.bio._') }}</label>
-                            <textarea name="bio" id="bio" rows="4">{{ Auth::user()->bio }}</textarea>
+                            <textarea name="bio" id="bio" rows="4" autocomplete="off">{{ Auth::user()->bio }}</textarea>
                             <small id="bio">{{ __('dashboard.profile.bio.tooltip') }}</small>
                         </div>
                     </div>
@@ -167,14 +167,14 @@
                     <div class="center aligned column">
                         <div class="field">
                             <label for="userName">{{ __('dashboard.profile.username._') }}</label>
-                            <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}">
+                            <input type="text" id="userName" name="username" aria-describedby="nameHelp" placeholder="{{ Auth::user()->name }}" autocomplete="off">
                             <small id="nameHelp">{{ __('dashboard.profile.username.tooltip') }}</small>
                         </div>
                     </div>
                     <div class="center aligned column">
                         <div class="field">
                             <label for="email">{{ __('dashboard.profile.email._') }}</label>
-                            <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}">
+                            <input type="text" id="email" name="email" aria-describedby="emailHelp" placeholder="{{ Auth::user()->email }}" autocomplete="off">
                             <small id="emailHelp">{{ __('dashboard.profile.email.tooltip') }}</small>
                         </div>
                     </div>
@@ -183,14 +183,14 @@
                     <div class="center aligned column">
                         <div class="field">
                             <label for="password">{{ __('dashboard.profile.newpasswd._') }}</label>
-                            <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123">
+                            <input type="password" id="password" name="password" aria-describedby="passwordHelp" placeholder="password123" autocomplete="new-password">
                             <small id="passwordHelp">{{ __('dashboard.profile.newpasswd.tooltip') }}</small>
                         </div>
                     </div>
                     <div class="center aligned column">
                         <div class="field">
                             <label for="oldpasswd">{{ __('dashboard.profile.oldpasswd._') }}</label>
-                            <input type="password" id="oldpasswd" name="oldpasswd" aria-describedby="oldpasswdHelp" placeholder="oldpasswd123" required="">
+                            <input type="password" id="oldpasswd" name="oldpasswd" aria-describedby="oldpasswdHelp" placeholder="oldpasswd123" required="" autocomplete="current-password">
                             <small id="oldpasswdHelp">{{ __('dashboard.profile.oldpasswd.tooltip') }}</small>
                         </div>
                     </div>

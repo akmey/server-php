@@ -10,7 +10,7 @@
 
             <div class="field{{ $errors->has('email') ? ' error' : '' }}">
                 <label for="email">{{ __('auth.email') }}</label>
-                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="email">
 
                 {{-- @if ($errors->has('email'))
                     <span class="invalid-feedback" role="alert">
@@ -21,7 +21,7 @@
 
             <div class="field{{ $errors->has('password') ? ' error' : '' }}">
                 <label for="password">{{ __('auth.password') }}</label>
-                <input id="password" type="password" name="password" required>
+                <input id="password" type="password" name="password" required autocomplete="current-password">
 
                 {{-- @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">
@@ -54,11 +54,11 @@
             @endif
 
             <button type="submit" class="ui primary button">
-                {{ __('Login') }}
+                {{ __('auth.login') }}
             </button>
             @if (Route::has('password.request'))
                 <a class="ui button" href="{{ route('password.request') }}">
-                    {{ __('Forgot Your Password?') }}
+                    {{ __('auth.password-forgot') }}
                 </a>
             @endif
         </form>
