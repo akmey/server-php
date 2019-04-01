@@ -1,5 +1,5 @@
 <template>
-    <div class="item" :data-clipboard-text="content + ' ' + comment" :id="comment" @click="notification()">
+    <div class="item" :data-clipboard-text="content + ' ' + comment" :data-name="comment" @click="notification()">
         <i class="key icon"></i>
         <div class="content">
             <div class="header">{{ comment }}</div>
@@ -28,7 +28,7 @@ export default {
     },
 
     mounted() {
-        new ClipboardJS('#'+this.comment);
+        new ClipboardJS('div[data-name="'+this.comment+'"]');
     }
 }
 </script>

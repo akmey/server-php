@@ -1,5 +1,5 @@
 <template>
-    <a class="item" @click.prevent="switchTheme"><i class="sun outline icon" v-if="dark"></i><i class="moon outline icon" v-else></i></a>
+    <a class="item" @click.prevent="switchTheme"><i class="lightbulb icon" v-if="dark"></i><i class="moon icon" v-else></i></a>
 </template>
 
 <script>

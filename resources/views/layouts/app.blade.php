@@ -80,7 +80,7 @@
             </div>
         </nav>
 
-        <main class="minimargin">
+        <main class="minimargin" v-if="lang">
             <noscript>
                 <div class="ui container">
                     <div class="ui negative message">
