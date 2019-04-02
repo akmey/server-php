@@ -19,6 +19,10 @@ return [
             'keys' => [
                 '_' => 'SSH public keys',
                 'desc' => 'Your keys: the ones you add on our website or via the SSH server.'
+            ],
+            'teams' => [
+                '_' => 'Teams',
+                'desc' => 'The teams you created, the membership of teams.'
             ]
         ],
         'logs' => [

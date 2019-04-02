@@ -19,6 +19,10 @@ return [
             'keys' => [
                 '_' => 'Clés SSH publiques',
                 'desc' => 'Vos clés: celles que vous ajoutez.'
+            ],
+            'teams' => [
+                '_' => 'Équipes',
+                'desc' => 'Les équipes dont vous êtes le créateur ainsi que celles dont vous êtes membres.'
             ]
         ],
         'logs' => [

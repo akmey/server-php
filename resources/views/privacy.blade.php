@@ -33,6 +33,13 @@
                                 <div class="description">{{ __('doc.privacy.user.keys.desc') }}</div>
                             </div>
                         </div>
+                        <div class="item">
+                            <i class="users icon"></i>
+                            <div class="content">
+                                <div class="header">{{ __('doc.privacy.user.teams._') }}</div>
+                                <div class="description">{{ __('doc.privacy.user.teams.desc') }}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
