@@ -19,7 +19,7 @@
                         <div class="sub header">{{ __('profile.registered', ['date' => date('d/m/Y', strtotime($team->creator->created_at))]) }}</div>
                     </div>
                 </h4>
-                @if (Auth::user()->can('update', $team)) <a href="{{ route('team.admin', ['teamid' => $team->id]) }}" class="ui primary labeled icon button"><i class="edit icon"></i> {{ __('profile.edit') }}</a> @endif
+                @if (Auth::user() && Auth::user()->can('update', $team)) <a href="{{ route('team.admin', ['teamid' => $team->id]) }}" class="ui primary labeled icon button"><i class="edit icon"></i> {{ __('profile.edit') }}</a> @endif
                 <br><br>
                 <a class="ui teal left ribbon label">{{ __('profile.bio') }}</a>
                 <br><br>
@@ -36,8 +36,8 @@
                             <div class="description">{{ __('profile.registered', ['date' => date('d/m/Y', strtotime($user->created_at))]) }}</div>
                         </div>
                         <div class="right floated content">
-                            @if (Auth::user()->can('kickMember', $team) && Auth::id() != $user->id) <a href="{{ route('team.admin.kick', ['teamid' => $team->id, 'userid' => $user->id]) }}" class="ui orange tiny button">{{ __('profile.kick') }}</a> @endif
-                            @if (Auth::id() == $user->id && Auth::user()->cannot('kickMember', $team)) <a href="{{ route('team.admin.kick', ['teamid' => $team->id, 'userid' => $user->id]) }}" class="ui orange tiny button">{{ __('team.member.quit') }}</a> @endif
+                            @if (Auth::user() && Auth::user()->can('kickMember', $team) && Auth::id() != $user->id) <a href="{{ route('team.admin.kick', ['teamid' => $team->id, 'userid' => $user->id]) }}" class="ui orange tiny button">{{ __('profile.kick') }}</a> @endif
+                            @if (Auth::user() && Auth::id() == $user->id && Auth::user()->cannot('kickMember', $team)) <a href="{{ route('team.admin.kick', ['teamid' => $team->id, 'userid' => $user->id]) }}" class="ui orange tiny button">{{ __('team.member.quit') }}</a> @endif
                         </div>
                     </div>
                     @endforeach
