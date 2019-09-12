@@ -7,6 +7,11 @@
 
 ATH_KEYS_PATH="$HOME/.ssh/authorized_keys"
 
+# checks if the ~/.ssh folder exists, if not, creates it
+[ ! -d "$HOME/.ssh" ] && mkdir $HOME/.ssh
+
+if [ ! -f $ATH_KEYS_PATH ]; then touch $ATH_KEYS_PATH; fi
+
 if [ -n "$1" ]
 then
     echo "Installing {{ $user->name }} keys in $1..."
@@ -24,11 +29,6 @@ then
     fi
 else
     echo "Installing {{ $user->name }} keys in $ATH_KEYS_PATH..."
-    if [ ! -f $ATH_KEYS_PATH ]
-    then
-        echo "$ATH_KEYS_PATH doesn't exist, specify a file or create it."
-        exit 1
-    else
         echo "
 # -- Akmey.sh User:{{ $user->name }} --
 @foreach ($user->keys as $key)
