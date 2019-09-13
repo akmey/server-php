@@ -12,10 +12,10 @@ Akmey is a keyserver, but not for GPG keys, for SSH ones! It is bundled with too
 - Fetch the webclient deps using `npm install`
 - Build Semantic UI : `cd resources/semantic; gulp build`
 - Build the webclient using `npm run production`
-- Make sure permissions are good
-- `php artisan migrate` : create the scehmas
-- `php artisan passport:install` : create OAuth keys
+- Make sure permissions are corrects
+- `php artisan migrate` : create the schemes
+- `php artisan passport:install` : creates OAuth keys
 - `php artisan passport:client --password` : create a password grant client (for SSH subserver)
-- Proxy that through nginx or apache and Akmey is ready!
+- Proxy that through Nginx or Apache and Akmey is ready!
 
 _Now you can continue by installing the Akmey SSH subserver to deposit keys easily._
