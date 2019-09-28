@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Storage;
 
 class DeleteAccountController extends Controller
 {
@@ -20,6 +21,7 @@ class DeleteAccountController extends Controller
     public function deleteAccount() {
         Storage::disk('public')->delete(Auth::user()->profilepic);
         Auth::user()->forceDelete();
+        session()->flush();
         return redirect('/');
     }
 }

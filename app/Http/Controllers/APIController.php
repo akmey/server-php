@@ -105,7 +105,7 @@ class APIController extends Controller
     }
 
     public function getUserByQuery(Request $request, $query) {
-        $user = User::where('email', $query)->orWhere('name', $query)->first();
+        $user = User::where('email', 'like', $query)->orWhere('name', 'like', $query)->first();
         if (empty($user)) {
             return response()->json(['error' => 'not_found', 'message' => 'This user does not exist.'], 404);
         } else {

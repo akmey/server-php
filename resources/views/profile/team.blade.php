@@ -42,7 +42,7 @@
                     </div>
                     @endforeach
                 </div>
-                @if (Auth::user()->can('update', $team))
+                @if (Auth::user() && Auth::user()->can('update', $team))
                 <new-member teamid="{{ $team->id }}" :lang="lang"></new-member>
                 @endif
                 <br><br>
