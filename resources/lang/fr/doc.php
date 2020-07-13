@@ -26,7 +26,7 @@ return [
             ]
         ],
         'logs' => [
-            '_' => 'Jouraux serveurs',
+            '_' => 'Journaux serveurs',
             'desc' => 'Les accès à Akmey sont journalisés.',
             'ip' => [
                 '_' => 'IP',
