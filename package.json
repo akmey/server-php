@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@sentry/browser": "^4.6.6",
-        "axios": "^0.18",
+        "axios": "^0.21",
         "browser-sync": "^2.26.3",
         "browser-sync-webpack-plugin": "^2.2.2",
         "clipboard": "^2.0.4",
